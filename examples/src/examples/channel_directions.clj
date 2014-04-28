@@ -1,6 +1,6 @@
 (ns examples.channel-directions)
 
-(require '[clojure.core.async :as async :refer [<! >! <!! >!! timeout chan alt! go go-loop put!]])
+(require '[clojure.core.async :as async :refer [<! >! <!! >!! timeout chan alt! go go-loop put! pipe]])
 
 (defn ping [pings msg]
   (put! pings msg))
@@ -42,5 +42,18 @@
 (pong pi' po')
 
 (println (<!! po'))
+;>> passed message
+;=> nil
+
+;;
+;;
+
+(def pi'' (chan 1))
+(def po'' (chan 1))
+
+(pipe pi'' po'')
+
+(put! pi'' "passed message")
+(println (<!! po''))
 ;>> passed message
 ;=> nil
