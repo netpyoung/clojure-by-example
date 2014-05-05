@@ -1,5 +1,6 @@
 (ns clojure-by-example.core
   (:gen-class)
+  (:import [org.markdown4j Markdown4jProcessor])
   (:require [clojure.string :as string]
             [hiccup.core :as hiccup]
             [hiccup.page]
@@ -8,11 +9,12 @@
             [marginalia.parser :as parser]
             [stencil.core :as stencil]
             [me.raynes.fs :as fs]
-            [clojure.tools.reader.edn :as edn]
-            )
-  (:import [org.markdown4j Markdown4jProcessor]))
+            [clojure.tools.reader.edn :as edn]))
 
-(def example-base-dir* "examples")
+
+(def example-base-dir* "examples/src")
+(def public-base-dir* "public")
+
 
 (defn is-debug-comment? [section]
   (and (= (:type section)
@@ -25,6 +27,7 @@
 (let [md* (Markdown4jProcessor.)]
   (defn md [markdown-str]
     (. md* (process markdown-str))))
+
 
 (defn section->html [section]
   [:tr
@@ -48,17 +51,21 @@
           "")]]]])
 
 
-(defn clj->html [clj]
-  (let [basename (fs/base-name clj true)
-        html (str "public/" basename ".html")
-        template (slurp "templates/example.html")
-        doc (cc/path-to-doc clj)]
+(defn clj->html [in-clj out-html]
+  (let [parent-dir (fs/parent out-html)]
+    (when-not (fs/exists? parent-dir)
+      (when-not (fs/mkdirs parent-dir)
+        (throw (Exception.
+                (str "[ERROR] couldn't create output dir!" [in-clj out-html]))))))
+
+  (let [basename (fs/base-name in-clj true)
+        doc (cc/path-to-doc in-clj)]
     (->> [:html
 
           [:head
            [:meta {:charset "utf-8"}]
 
-           [:link {:rel "stylesheet" :href "../css/style.css"}]
+           [:link {:rel "stylesheet" :href "../../css/style.css"}]
            [:link {:rel "stylesheet" :href "http://yandex.st/highlightjs/8.0/styles/default.min.css"}]
            [:script {:src "http://yandex.st/highlightjs/8.0/highlight.min.js"}]
            [:script {:src "http://yandex.st/highlightjs/8.0/languages/clojure.min.js"}]
@@ -73,33 +80,47 @@
                 (map (fn [group]
                        [:table (section->html group)])))]]
          (hiccup/html {:mode :html} (hiccup.page/doctype :html5))
-         (spit html))))
+         (spit out-html))))
 
 
-(defn ^:private munge-ns [ns-sym]
-  ;; https://github.com/clojure/jvm.tools.analyzer/blob/master/src/main/clojure/clojure/jvm/tools/analyzer.clj#L863
-  (-> (name ns-sym)
-      (string/replace "." "/")
-      (string/replace "-" "_")
-      (str ".clj")))
-
-
-(defn xxx [info-dic]
+(defn info->ns [info-dic]
   (->> info-dic
        (mapcat (fn [[k v]]
                  (->> v
-                      (map #(str example-base-dir* "/"
-                                 (name k) "." (name %))))))))
+                      (map #(str (name k) "." (name %))))))))
+
+
+(defn ns->in-clj-path [namespace]
+  (->> namespace
+       (str example-base-dir* "/")
+       (fs/ns-path)
+       (str)))
+
+
+(defn ns->out-html-path [namespace]
+  (let [v (str public-base-dir* "/" namespace)]
+    (str (fs/parent (fs/ns-path v)) "/"
+         (fs/base-name (fs/ns-path v) true) ".html")))
 
 
 (defn -main [& args]
-  (clj->html "examples/functions.clj")
 
-  (->> (slurp "examples.edn")
-       (edn/read-string)
-       (xxx)
-       (map munge-ns)
-       (println))
+  (let [ns-info (->> (slurp "examples.edn")
+                     (edn/read-string)
+                     (info->ns))
+        clj-html-paths (->> ns-info
+                            (map (fn [namespace]
+                                   [(ns->in-clj-path namespace)
+                                    (ns->out-html-path namespace)])))]
 
-  (println (cc/find-processable-file-paths "examples" #".clj"))
-  )
+    ;; make example-files
+    (doseq [[in out] clj-html-paths]
+      (clj->html in out))))
+
+(hiccup/html [:h1
+              (for [i (range 10)]
+                [:td i])
+              ])
+(->> (slurp "examples.edn")
+     (edn/read-string)
+     )
