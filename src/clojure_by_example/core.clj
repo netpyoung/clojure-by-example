@@ -52,35 +52,35 @@
 
 
 (defn clj->html [in-clj out-html]
+  (let [parent-dir (fs/parent out-html)]
+    (when-not (fs/exists? parent-dir)
+      (when-not (fs/mkdirs parent-dir)
+        (throw (Exception.
+                (str "[ERROR] couldn't create output dir!" [in-clj out-html]))))))
 
-  (if-not (fs/mkdirs (fs/parent out-html))
+  (let [basename (fs/base-name in-clj true)
+        doc (cc/path-to-doc in-clj)]
+    (->> [:html
 
-    (throw (Exception.
-            (str "[ERROR] couldn't create output dir!" [in-clj out-html])))
+          [:head
+           [:meta {:charset "utf-8"}]
 
-    (let [basename (fs/base-name in-clj true)
-          doc (cc/path-to-doc in-clj)]
-      (->> [:html
+           [:link {:rel "stylesheet" :href "../../css/style.css"}]
+           [:link {:rel "stylesheet" :href "http://yandex.st/highlightjs/8.0/styles/default.min.css"}]
+           [:script {:src "http://yandex.st/highlightjs/8.0/highlight.min.js"}]
+           [:script {:src "http://yandex.st/highlightjs/8.0/languages/clojure.min.js"}]
+           [:script "hljs.initHighlightingOnLoad();"]
+           ]
+          [:body
+           [:div {:class "example" :id basename}
+            [:h2 [:a {:href "http://www.google.com"} "google!?"] ":" (:ns doc)]
+            ]
 
-            [:head
-             [:meta {:charset "utf-8"}]
-
-             [:link {:rel "stylesheet" :href "../../css/style.css"}]
-             [:link {:rel "stylesheet" :href "http://yandex.st/highlightjs/8.0/styles/default.min.css"}]
-             [:script {:src "http://yandex.st/highlightjs/8.0/highlight.min.js"}]
-             [:script {:src "http://yandex.st/highlightjs/8.0/languages/clojure.min.js"}]
-             [:script "hljs.initHighlightingOnLoad();"]
-             ]
-            [:body
-             [:div {:class "example" :id basename}
-              [:h2 [:a {:href "http://www.google.com"} "google!?"] ":" (:ns doc)]
-              ]
-
-             (->> (:groups doc)
-                  (map (fn [group]
-                         [:table (section->html group)])))]]
-           (hiccup/html {:mode :html} (hiccup.page/doctype :html5))
-           (spit out-html)))))
+           (->> (:groups doc)
+                (map (fn [group]
+                       [:table (section->html group)])))]]
+         (hiccup/html {:mode :html} (hiccup.page/doctype :html5))
+         (spit out-html))))
 
 
 (defn info->ns [info-dic]
@@ -98,18 +98,29 @@
 
 
 (defn ns->out-html-path [namespace]
-  (->> namespace
-       (str public-base-dir* "/")
-       (fs/ns-path)
-       (str)))
+  (let [v (str public-base-dir* "/" namespace)]
+    (str (fs/parent (fs/ns-path v)) "/"
+         (fs/base-name (fs/ns-path v) true) ".html")))
 
 
 (defn -main [& args]
-  (let [clj-html-paths (->> (slurp "examples.edn")
-                            (edn/read-string)
-                            (info->ns)
+
+  (let [ns-info (->> (slurp "examples.edn")
+                     (edn/read-string)
+                     (info->ns))
+        clj-html-paths (->> ns-info
                             (map (fn [namespace]
                                    [(ns->in-clj-path namespace)
                                     (ns->out-html-path namespace)])))]
+
+    ;; make example-files
     (doseq [[in out] clj-html-paths]
       (clj->html in out))))
+
+(hiccup/html [:h1
+              (for [i (range 10)]
+                [:td i])
+              ])
+(->> (slurp "examples.edn")
+     (edn/read-string)
+     )
