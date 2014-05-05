@@ -64,8 +64,9 @@
 
           [:head
            [:meta {:charset "utf-8"}]
-
-           [:link {:rel "stylesheet" :href "../../css/style.css"}]
+           [:link {:rel "favicon.ico" :type "image/x-icon"
+                   :href "netpyoung.github.io/clojure-by-example/resources/favicon.ico"}]
+           [:link {:rel "stylesheet" :href "../resources/css/style.css"}]
            [:link {:rel "stylesheet" :href "http://yandex.st/highlightjs/8.0/styles/default.min.css"}]
            [:script {:src "http://yandex.st/highlightjs/8.0/highlight.min.js"}]
            [:script {:src "http://yandex.st/highlightjs/8.0/languages/clojure.min.js"}]
@@ -116,11 +117,3 @@
     ;; make example-files
     (doseq [[in out] clj-html-paths]
       (clj->html in out))))
-
-(hiccup/html [:h1
-              (for [i (range 10)]
-                [:td i])
-              ])
-(->> (slurp "examples.edn")
-     (edn/read-string)
-     )
