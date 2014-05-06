@@ -1,58 +1,16 @@
 (ns clojure-by-example.core
   (:gen-class)
-  (:import [org.markdown4j Markdown4jProcessor])
   (:require [clojure.string :as string]
-            [hiccup.core :as hiccup]
-            [hiccup.page]
-            [marginalia.core :as cc]
-            [marginalia.html :as html]
-            [marginalia.parser :as parser]
-            [stencil.core :as stencil]
+            [marginalia.core :as marginalia]
             [me.raynes.fs :as fs]
-            [clojure.tools.reader.edn :as edn]))
+            [clojure.tools.reader.edn :as edn]
+            [clojure-by-example.page :as page]
+            ))
 
 
 (def info-fname* "examples.edn")
 (def example-base-dir* "examples/src")
 (def public-base-dir* "public")
-
-
-(defn is-debug-comment?
-  [section]
-  (and (= (:type section)
-          :comment)
-       (->> section
-            (:raw)
-            (re-find #"^(>>|=>)")
-            (some?))))
-
-(let [md* (Markdown4jProcessor.)]
-  (defn md
-    [markdown-str]
-    (->> markdown-str
-         (.process md*))))
-
-
-(defn section->html [section]
-  [:tr
-   [:td {:class "docs"}
-    (md (or (cond
-             (is-debug-comment? section)  ""
-             (= (:type section) :comment) (:raw section)
-             :else                        (:docstring section))
-            ""))
-    ]
-
-   [:td {:class "code"}
-    [:pre
-     [:code {:class "clojure"}
-      (or (cond
-           (= (:type section) :code)
-           (marginalia.hiccup/escape-html (:raw section))
-
-           (is-debug-comment? section)
-           (marginalia.hiccup/escape-html (str ";; " (:raw section))))
-          "")]]]])
 
 
 (defn clj->html [in-clj out-html]
@@ -63,28 +21,9 @@
                 (str "[ERROR] couldn't create output dir!" [in-clj out-html]))))))
 
   (let [basename (fs/base-name in-clj true)
-        doc (cc/path-to-doc in-clj)]
-    (->> [:html
+        doc (marginalia/path-to-doc in-clj)]
 
-          [:head
-           [:meta {:charset "utf-8"}]
-           [:link {:rel "icon" :type "image/x-icon"
-                   :href "../../resources/favicon.ico"}]
-           [:link {:rel "stylesheet" :href "../../resources/css/style.css"}]
-           [:link {:rel "stylesheet" :href "http://yandex.st/highlightjs/8.0/styles/default.min.css"}]
-           [:script {:src "http://yandex.st/highlightjs/8.0/highlight.min.js"}]
-           [:script {:src "http://yandex.st/highlightjs/8.0/languages/clojure.min.js"}]
-           [:script "hljs.initHighlightingOnLoad();"]
-           ]
-          [:body
-           [:div {:class "example" :id basename}
-            [:h2 [:a {:href "http://www.google.com"} "google!?"] ":" (:ns doc)]
-            ]
-
-           (->> (:groups doc)
-                (map (fn [group]
-                       [:table (section->html group)])))]]
-         (hiccup/html {:mode :html} (hiccup.page/doctype :html5))
+    (->> (page/example-page basename doc)
          (spit out-html))))
 
 
