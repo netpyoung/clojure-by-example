@@ -13,13 +13,14 @@
 (def public-base-dir* "public")
 
 
-(defn clj->html [in-clj out-html]
-  (let [parent-dir (fs/parent out-html)]
-    (when-not (fs/exists? parent-dir)
-      (when-not (fs/mkdirs parent-dir)
-        (throw (Exception.
-                (str "[ERROR] couldn't create output dir!" [in-clj out-html]))))))
+(defn ensure-dir! [target-dir]
+  (when-not (fs/exists? target-dir)
+    (when-not (fs/mkdirs target-dir)
+      (throw (Exception.
+              (str "[ERROR] couldn't create target dir!" target-dir))))))
 
+
+(defn clj->html [in-clj out-html]
   (let [basename (fs/base-name in-clj true)
         doc (marginalia/path-to-doc in-clj)]
 
@@ -48,7 +49,6 @@
        (str)))
 
 
-
 (defn ns->out-html-path
   "
   >> (ns->out-html-path :hello.a-b)
@@ -72,18 +72,23 @@
          (spit "index.html"))
 
     ;; main index page.
+    (ensure-dir! public-base-dir*)
     (->> (page/main-index-page ns-info-dic)
          (spit (str public-base-dir* "/" "index.html")))
 
     ;; example pages.
     (doseq [[section sub-page-namespaces :as ns-info] ns-info-dic]
+      (ensure-dir! (str public-base-dir* "/" (name section)))
+
       (->> (page/section-index-page ns-info)
            (spit (str public-base-dir* "/" (name section) "/index.html")))
-      ;;   (doseq [[in out] (->> sub-page-namespaces
-      ;;                         (map (fn [namespace]
-      ;;                                [(ns->in-clj-path namespace)
-      ;;                                 (ns->out-html-path namespace)])))]
-      ;;     (clj->html in out))
+      (doseq [[in out] (->> sub-page-namespaces
+                            (map (fn [namespace]
+                                   [(ns->in-clj-path namespace)
+                                    (ns->out-html-path namespace)])))]
+        (ensure-dir! (fs/parent out))
+
+        (clj->html in out))
       )
     )
   )

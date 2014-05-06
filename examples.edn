@@ -1,3 +1,7 @@
 {:common [:functions
+          ;; :array
+          ;; :if-else
+          ;; :maps
+          ;; :regexp
           :closures]
  :async [:alts]}
