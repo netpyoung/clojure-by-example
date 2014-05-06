@@ -113,16 +113,14 @@
   (->> [:html
         [:body
          (for [[k v] ns-info-dic]
-           [:div {:id k}
+           [:div {:id k :style "float:left;"}
+            [:h3 [:a {:href k} (string/capitalize (name k))]]
             [:ul
-             [:li [:a {:href k} k]]
              (->> (take 5 v)
                   (map (fn [namespace] [(ns-sym->basename namespace) (ns-sym->title namespace)]))
                   (map (fn [[basename title]] [:li [:a {:href (str "./" (name k) "/" basename ".html")} title]])))
              ]
-            [:br]
             ]
-
            )
          ]
         ]

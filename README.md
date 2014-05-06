@@ -1,3 +1,11 @@
+# TODO
+* https://gobyexample.com/
+* http://getbootstrap.com/
+* http://stackoverflow.com/questions/12813573/position-icons-into-circle
+* http://jsfiddle.net/thebabydino/nA2VE/
+* https://github.com/arosequist/om-autocomplete
+
+
 # hosting
 * gh-pages : https://help.github.com/articles/creating-project-pages-manually
 
