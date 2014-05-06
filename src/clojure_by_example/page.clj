@@ -28,19 +28,17 @@
              (is-debug-comment? section)  ""
              (= (:type section) :comment) (:raw section)
              :else                        (:docstring section))
-            ""))
-    ]
+            ""))]
 
    [:td {:class "code"}
-    [:pre
-     [:code {:class "clojure"}
-      (or (cond
-           (= (:type section) :code)
-           (marginalia.hiccup/escape-html (:raw section))
+    [:pre [:code {:class "clojure"}
+           (or (cond
+                (= (:type section) :code)
+                (marginalia.hiccup/escape-html (:raw section))
 
-           (is-debug-comment? section)
-           (marginalia.hiccup/escape-html (str ";; " (:raw section))))
-          "")]]]])
+                (is-debug-comment? section)
+                (marginalia.hiccup/escape-html (str ";; " (:raw section))))
+               "")]]]])
 
 
 (defn example-page [basename doc]
@@ -54,14 +52,13 @@
          [:link {:rel "stylesheet" :href "http://yandex.st/highlightjs/8.0/styles/default.min.css"}]
          [:script {:src "http://yandex.st/highlightjs/8.0/highlight.min.js"}]
          [:script {:src "http://yandex.st/highlightjs/8.0/languages/clojure.min.js"}]
-         [:script "hljs.initHighlightingOnLoad();"]
-         ]
-        [:body
-         [:div {:class "example" :id basename}
-          [:h2 [:a {:href "http://www.google.com"} "google!?"] ":" (:ns doc)]
-          ]
+         [:script "hljs.initHighlightingOnLoad();"]]
 
-         (->> (:groups doc)
-              (map (fn [group]
-                     [:table (section->html group)])))]]
+        [:body
+         [:div {:class "title" :id basename}
+          [:h2 [:a {:href "http://www.google.com"} "google!?"] ":" (:ns doc)]]
+         [:div {:class "example"}
+          (->> (:groups doc)
+               (map (fn [group]
+                      [:table (section->html group)])))]]]
        (hiccup/html {:mode :html} (hiccup.page/doctype :html5))))
