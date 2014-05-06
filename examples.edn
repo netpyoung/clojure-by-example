@@ -1,2 +1,3 @@
-{:common [:functions]
+{:common [:functions
+          :closures]
  :async [:alts]}

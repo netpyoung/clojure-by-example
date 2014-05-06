@@ -12,11 +12,13 @@
             [clojure.tools.reader.edn :as edn]))
 
 
+(def info-fname* "examples.edn")
 (def example-base-dir* "examples/src")
 (def public-base-dir* "public")
 
 
-(defn is-debug-comment? [section]
+(defn is-debug-comment?
+  [section]
   (and (= (:type section)
           :comment)
        (->> section
@@ -25,8 +27,10 @@
             (some?))))
 
 (let [md* (Markdown4jProcessor.)]
-  (defn md [markdown-str]
-    (. md* (process markdown-str))))
+  (defn md
+    [markdown-str]
+    (->> markdown-str
+         (.process md*))))
 
 
 (defn section->html [section]
@@ -84,11 +88,12 @@
          (spit out-html))))
 
 
-(defn info->ns [info-dic]
+(defn raw-info->ns-info [info-dic]
   (->> info-dic
-       (mapcat (fn [[k v]]
-                 (->> v
-                      (map #(str (name k) "." (name %))))))))
+       (map (fn [[k v]]
+              [k (->> v
+                      (map #(str (name k) "." (name %))))]))
+       (into {})))
 
 
 (defn ns->in-clj-path [namespace]
@@ -104,15 +109,50 @@
          (fs/base-name (fs/ns-path v) true) ".html")))
 
 
-(defn -main [& args]
+(defn ns-sym->basename
+  "
+  >> (munge-ns :hello.clojure-world)
+  ;=> \"clojure_world\"
+  "
+  [ns-sym]
 
-  (let [ns-info (->> (slurp "examples.edn")
-                     (edn/read-string)
-                     (info->ns))
-        clj-html-paths (->> ns-info
-                            (map (fn [namespace]
-                                   [(ns->in-clj-path namespace)
-                                    (ns->out-html-path namespace)])))]
+  (-> (name ns-sym)
+      (string/replace "." "/")
+      (string/replace "-" "_")
+      (fs/base-name)))
+
+
+
+(defn ns-sym->title
+  "
+  >> (ns-sym->title :hello.clojure-world)
+  ;=> \"Clojure World\"
+  "
+  [ns-sym]
+
+  (->> (-> (name ns-sym)
+           (string/split #"\.")
+           (last)
+           (string/split #"-"))
+       (map string/capitalize)
+       (interpose " ")
+       (apply str)))
+
+
+(defn -main []
+  (let [ns-info
+        (->> info-fname*
+             (slurp)
+             (edn/read-string)
+             (raw-info->ns-info))
+
+        clj-html-paths
+        (->> ns-info
+             (vals)
+             (flatten)
+             (map (fn [namespace]
+                    [(ns->in-clj-path namespace)
+                     (ns->out-html-path namespace)])))]
 
     ;; make example-files
     (doseq [[in out] clj-html-paths]
