@@ -35,64 +35,55 @@
        (into {})))
 
 
-(defn ns->in-clj-path [namespace]
-  (->> namespace
+(defn ns->in-clj-path
+  "
+  >> (ns->in-clj-path :hello.a-b)
+  ;=> \"/home/pyoung/prj/clojure-by-example/examples/src/hello/a_b.clj\"
+  "
+  [ns-sym]
+
+  (->> (name ns-sym)
        (str example-base-dir* "/")
        (fs/ns-path)
        (str)))
 
 
-(defn ns->out-html-path [namespace]
-  (let [v (str public-base-dir* "/" namespace)]
+
+(defn ns->out-html-path
+  "
+  >> (ns->out-html-path :hello.a-b)
+  ;=> \"/home/pyoung/prj/clojure-by-example/public/hello/a_b.html\"
+  "
+  [ns-sym]
+
+  (let [v (str public-base-dir* "/" (name ns-sym))]
     (str (fs/parent (fs/ns-path v)) "/"
          (fs/base-name (fs/ns-path v) true) ".html")))
 
 
-(defn ns-sym->basename
-  "
-  >> (munge-ns :hello.clojure-world)
-  ;=> \"clojure_world\"
-  "
-  [ns-sym]
-
-  (-> (name ns-sym)
-      (string/replace "." "/")
-      (string/replace "-" "_")
-      (fs/base-name)))
-
-
-
-(defn ns-sym->title
-  "
-  >> (ns-sym->title :hello.clojure-world)
-  ;=> \"Clojure World\"
-  "
-  [ns-sym]
-
-  (->> (-> (name ns-sym)
-           (string/split #"\.")
-           (last)
-           (string/split #"-"))
-       (map string/capitalize)
-       (interpose " ")
-       (apply str)))
-
-
 (defn -main []
-  (let [ns-info
-        (->> info-fname*
-             (slurp)
-             (edn/read-string)
-             (raw-info->ns-info))
+  (let [ns-info-dic (->> info-fname*
+                         (slurp)
+                         (edn/read-string)
+                         (raw-info->ns-info))]
 
-        clj-html-paths
-        (->> ns-info
-             (vals)
-             (flatten)
-             (map (fn [namespace]
-                    [(ns->in-clj-path namespace)
-                     (ns->out-html-path namespace)])))]
+    ;; main page.
+    (->> (page/main-page ns-info-dic)
+         (spit "index.html"))
 
-    ;; make example-files
-    (doseq [[in out] clj-html-paths]
-      (clj->html in out))))
+    ;; main index page.
+    (->> (page/main-index-page ns-info-dic)
+         (spit (str public-base-dir* "/" "index.html")))
+
+    ;; example pages.
+    (doseq [[section sub-page-namespaces :as ns-info] ns-info-dic]
+      (->> (page/section-index-page ns-info)
+           (spit (str public-base-dir* "/" (name section) "/index.html")))
+      ;;   (doseq [[in out] (->> sub-page-namespaces
+      ;;                         (map (fn [namespace]
+      ;;                                [(ns->in-clj-path namespace)
+      ;;                                 (ns->out-html-path namespace)])))]
+      ;;     (clj->html in out))
+      )
+    )
+  )
