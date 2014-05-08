@@ -13,22 +13,17 @@
 (def public-base-dir* "public")
 
 
-(defn ensure-dir! [target-dir]
+(defn ensure-dir!
+  [target-dir]
+
   (when-not (fs/exists? target-dir)
     (when-not (fs/mkdirs target-dir)
       (throw (Exception.
               (str "[ERROR] couldn't create target dir!" target-dir))))))
 
 
-(defn clj->html [in-clj out-html]
-  (let [basename (fs/base-name in-clj true)
-        doc (marginalia/path-to-doc in-clj)]
-
-    (->> (page/example-page basename doc)
-         (spit out-html))))
-
-
-(defn raw-info->ns-info [info-dic]
+(defn raw-info->ns-info
+  [info-dic]
   (->> info-dic
        (map (fn [[k v]]
               [k (->> v
@@ -57,8 +52,17 @@
   [ns-sym]
 
   (let [v (str public-base-dir* "/" (name ns-sym))]
-    (str (fs/parent (fs/ns-path v)) "/"
+    (str (fs/parent (fs/ns-path v))
+         "/"
          (fs/base-name (fs/ns-path v) true) ".html")))
+
+
+(defn clj->html
+  [in-clj out-html]
+  ;; TODO(kep) need refactoring.
+  (->> (marginalia/path-to-doc in-clj)
+       (page/example-page)
+       (spit out-html)))
 
 
 (defn -main []
