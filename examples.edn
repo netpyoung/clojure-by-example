@@ -1,17 +1,18 @@
 {:common [:array
           :closures
           :codec
-          :collection_fn
-          :command_line
+          :collection-fn
+          :command-line
           :const
-          :digest :environment
+          :digest
+          :environment
           :errors
           :exit
-          :file_read
+          :file-read
           :for
           :functions
-          :hello_world
-          :if_else
+          :hello-world
+          :if-else
           :maps
           :methods
           :notation
@@ -24,11 +25,11 @@
           :signal
           :sorting
           :string
-          :string_formatting
+          :string-formatting
           :switch
           :thread
           :time
-          :url_parsing
+          :url-parsing
           :values
           :variables
           :vector

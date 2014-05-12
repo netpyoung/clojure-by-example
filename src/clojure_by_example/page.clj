@@ -137,6 +137,7 @@
         (->> (take 5 v)
              (map (fn [namespace] [(ns-sym->basename namespace) (ns-sym->title namespace)]))
              (map (fn [[basename title]] [:li [:a {:href (str "./" (name k) "/" basename ".html")} title]])))
+        [:li [:a {:href k}] "..."]
         ]
        ]
       )
@@ -149,6 +150,7 @@
   (hiccup.page/html5
    [:body
     [:h1 [:a {:href "../"} "public"]]
+    [:h2 section]
     [:ul
      (->> sub-page-namespaces
           (map (fn [namespace]
@@ -205,7 +207,6 @@
        (group-by (fn [x]
                    (-> (name x)
                        (string/replace "." "/")
-                       (string/replace "-" "_")
                        (string/split #"/")
                        (first))))
        (reduce-kv (fn [acc k v]
@@ -214,7 +215,6 @@
                                 (mapv (fn [x]
                                         (-> (name x)
                                             (string/replace "." "/")
-                                            (string/replace "-" "_")
                                             (string/split #"/")
                                             (second)
                                             (keyword)))))))
