@@ -1,10 +1,14 @@
 (ns clojure-by-example.page
   (:import [org.markdown4j Markdown4jProcessor])
   (:require [clojure.string :as string]
+            [marginalia.core :as marginalia]
             [marginalia.hiccup]
             [hiccup.core :as hiccup]
             [me.raynes.fs :as fs]
-            [hiccup.page]))
+            [hiccup.page]
+            [clojure.tools.namespace.find :as find]
+            ))
+
 
 (let [md* (Markdown4jProcessor.)]
   (defn md
@@ -22,9 +26,23 @@
             (some?))))
 
 
+
+(defn ns-sym->cljfname
+  "
+  >> (ns-sym->cljfname :hello.clojure-world)
+  ;=> \"hello/clojure_world.clj\"
+  "
+  [ns-sym]
+
+  (-> (name ns-sym)
+      (string/replace "." "/")
+      (string/replace "-" "_")
+      (str ".clj")))
+
+
 (defn ns-sym->basename
   "
-  >> (munge-ns :hello.clojure-world)
+  >> (ns-sym->basename :hello.clojure-world)
   ;=> \"clojure_world\"
   "
   [ns-sym]
@@ -141,8 +159,11 @@
   )
 
 
-(defn example-page [doc]
-  (let [namespace
+(defn example-page [in-clj]
+  (let [doc
+        (marginalia/path-to-doc in-clj)
+
+        namespace
         (:ns doc)
 
         basename
@@ -166,8 +187,35 @@
 
      [:body
       [:div {:class "title" :id namespace}
-       [:h2 [:a {:href "./"} parent-dir] "." basename]]
+       [:h1 [:a {:href "../"} "Clojure By Example"]]
+       [:h2 [:a {:href "./"} parent-dir] "." basename]
+       [:h3 [:a {:href (str "https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/" (ns-sym->cljfname namespace))} "source-github"]]
+       [:h3 [:a {:href (str "https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/" (ns-sym->cljfname namespace))} "source-raw"]]
+       ]
       [:div {:class "example"}
        (->> (:groups doc)
             (map (fn [group]
                    [:table (section->html group)])))]])))
+
+
+
+(defn get-example-namespace-info-dic [dirname]
+  (->> (java.io.File. dirname)
+       (find/find-namespaces-in-dir)
+       (group-by (fn [x]
+                   (-> (name x)
+                       (string/replace "." "/")
+                       (string/replace "-" "_")
+                       (string/split #"/")
+                       (first))))
+       (reduce-kv (fn [acc k v]
+                    (assoc acc (keyword k)
+                           (->> v
+                                (mapv (fn [x]
+                                        (-> (name x)
+                                            (string/replace "." "/")
+                                            (string/replace "-" "_")
+                                            (string/split #"/")
+                                            (second)
+                                            (keyword)))))))
+                  {})))

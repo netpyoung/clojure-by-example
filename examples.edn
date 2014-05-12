@@ -1,7 +1,46 @@
-{:common [:functions
-          ;; :array
-          ;; :if-else
-          ;; :maps
-          ;; :regexp
-          :closures]
- :async [:alts]}
+{:common [:array
+          :closures
+          :codec
+          :collection_fn
+          :command_line
+          :const
+          :digest :environment
+          :errors
+          :exit
+          :file_read
+          :for
+          :functions
+          :hello_world
+          :if_else
+          :maps
+          :methods
+          :notation
+          :protocol
+          :random
+          :range
+          :record
+          :recursion
+          :regexp
+          :signal
+          :sorting
+          :string
+          :string_formatting
+          :switch
+          :thread
+          :time
+          :url_parsing
+          :values
+          :variables
+          :vector
+          ]
+
+ :async [:alts
+         :timeout
+         :timer
+         :basic
+         :channel
+         :channel_buffering
+         :channel_directions
+         :channel_synchronization
+         :ticker
+         :worker_pools]}

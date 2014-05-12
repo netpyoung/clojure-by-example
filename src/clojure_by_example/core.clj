@@ -1,7 +1,6 @@
 (ns clojure-by-example.core
   (:gen-class)
   (:require [clojure.string :as string]
-            [marginalia.core :as marginalia]
             [me.raynes.fs :as fs]
             [clojure.tools.reader.edn :as edn]
             [clojure-by-example.page :as page]
@@ -60,7 +59,7 @@
 (defn clj->html
   [in-clj out-html]
   ;; TODO(kep) need refactoring.
-  (->> (marginalia/path-to-doc in-clj)
+  (->> in-clj
        (page/example-page)
        (spit out-html)))
 
