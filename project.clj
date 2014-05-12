@@ -12,7 +12,6 @@
                  [hiccup "1.0.5"]
                  [stencil "0.3.3"]
                  [org.commonjava.googlecode.markdown4j/markdown4j "2.2-cj-1.0"]
-
                  ]
   :clean-targets [:target-path "public"]
   :main clojure-by-example.core)

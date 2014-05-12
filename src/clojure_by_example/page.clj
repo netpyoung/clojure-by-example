@@ -6,7 +6,6 @@
             [me.raynes.fs :as fs]
             [hiccup.page]))
 
-
 (let [md* (Markdown4jProcessor.)]
   (defn md
     [markdown-str]
@@ -82,7 +81,8 @@
    [:body
     [:h1 "Under Construction"]
     [:ul
-     (->> [[:a {:href "http://clojure.org/"} "clojure"
+     (->> [[:a {:href "public"} "public"]
+           [:a {:href "http://clojure.org/"} "clojure"
             [:img {:src "http://clojure.org/file/view/clojure-icon.gif"}]]
            [:a {:href "http://leiningen.org/"} "leiningen"
             [:img {:src "http://leiningen.org/img/leiningen.jpg"}]]
@@ -130,7 +130,7 @@
 (defn section-index-page [[section sub-page-namespaces :as ns-info]]
   (hiccup.page/html5
    [:body
-    [:h1 [:a {:href "../public/"} "public"]]
+    [:h1 [:a {:href "../"} "public"]]
     [:ul
      (->> sub-page-namespaces
           (map (fn [namespace]
