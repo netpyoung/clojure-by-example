@@ -40,8 +40,8 @@
          :timer
          :basic
          :channel
-         :channel_buffering
-         :channel_directions
-         :channel_synchronization
+         :channel-buffering
+         :channel-directions
+         :channel-synchronization
          :ticker
-         :worker_pools]}
+         :worker-pools]}
