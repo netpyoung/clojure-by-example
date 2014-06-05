@@ -1,47 +1,53 @@
-{:common [:array
-          :closures
-          :codec
-          :collection-fn
-          :command-line
+{:common [:hello-world
+          :values
+          :variables
           :const
+          :for
+          :if-else
+          :switch
+          :array
+          :vector
+
+          :maps
+          :range
+          :functions
+          :closures
+          :recursion
+
+          :record
+          :methods
+          :protocol
+          :errors
+
+          :random
+          :collection-fn
           :digest
           :environment
-          :errors
-          :exit
-          :file-read
-          :for
-          :functions
-          :hello-world
-          :if-else
-          :maps
-          :methods
-          :notation
-          :protocol
-          :random
-          :range
-          :record
-          :recursion
-          :regexp
-          :signal
-          :sorting
+
           :string
           :string-formatting
-          :switch
+          :regexp
+          :file-read
+          :command-line
+          :notation
+          :codec
+          :signal
+          :exit
+
+
+          :sorting
           :thread
           :time
           :url-parsing
-          :values
-          :variables
-          :vector
           ]
 
- :async [:alts
-         :timeout
-         :timer
-         :basic
+ :async [:basic
          :channel
          :channel-buffering
          :channel-directions
          :channel-synchronization
+         :alts
+         :timeout
+         :timer
          :ticker
          :worker-pools]}
