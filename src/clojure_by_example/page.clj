@@ -1,13 +1,15 @@
 (ns clojure-by-example.page
-  (:import [org.markdown4j Markdown4jProcessor])
-  (:require [clojure.string :as string]
-            [marginalia.core :as marginalia]
-            [marginalia.hiccup]
-            [hiccup.core :as hiccup]
-            [me.raynes.fs :as fs]
-            [hiccup.page]
-            [clojure.tools.namespace.find :as find]
-            ))
+  (:import
+   [org.markdown4j Markdown4jProcessor])
+
+  (:require
+   [clojure.string :as string]
+   [marginalia.core :as marginalia]
+   [marginalia.hiccup]
+   [hiccup.core :as hiccup]
+   [me.raynes.fs :as fs]
+   [hiccup.page]
+   [clojure.tools.namespace.find :as find]))
 
 
 (let [md* (Markdown4jProcessor.)]
@@ -24,7 +26,6 @@
             (:raw)
             (re-find #"^(>>|=>)")
             (some?))))
-
 
 
 (defn ns-sym->cljfname
@@ -95,70 +96,79 @@
     [:meta {:charset "utf-8"}]
     [:link {:rel "icon" :type "image/x-icon"
             :href "resources/favicon.ico"}]
+    [:link {:rel "stylesheet" :href "../../resources/css/style.css"}]
     ]
    [:body
-    [:h1 "Under Construction"]
-    [:ul
-     (->> [[:a {:href "public"} "public"]
-           [:a {:href "http://clojure.org/"} "clojure"
-            [:img {:src "http://clojure.org/file/view/clojure-icon.gif"}]]
-           [:a {:href "http://leiningen.org/"} "leiningen"
-            [:img {:src "http://leiningen.org/img/leiningen.jpg"}]]
-           [:a {:href "http://www.youtube.com/user/ClojureTV"}
-            [:img {:src "https://developers.google.com/youtube/images/YouTube_logo_standard_white.png"}]]
-           [:a {:href "http://www.reddit.com/r/clojure"} "reddit"
-            [:img {:src "http://icons.iconarchive.com/icons/chrisbanks2/cold-fusion-hd/128/reddit-icon.png"}]]
-           [:a {:href "http://tryclj.com/"} "tryclj"]
-           ;; http://tryclj.com/resources/public/clojure-logo.png
-           ;; #63b132
-           ;; Try
-           ;; 72px
-           ;; color: #5881d8;
-           ;; Clo <em>j</em>ure
-           [:a {:href "http://himera.herokuapp.com/"}
-            "ClojureScript compiler as web service"]
-           [:a {:href "https://www.4clojure.com/"}
-            [:img {:src "https://www.4clojure.com/images/4clj-logo-small.png"}]]
-           [:a {:href "http://clojuredocs.org/"}
-            [:img {:src "http://clojuredocs.org/images/cd_logo.png"}]]]
-          (map (fn [e] [:li e])))]]
+    [:div {:class "main"}
+
+     [:h1 "Under Construction"]
+     [:ul
+      (->> [[:a {:href "public"} "public"]
+            [:a {:href "http://clojure.org/"} "clojure"
+             [:img {:src "http://clojure.org/file/view/clojure-icon.gif"}]]
+            [:a {:href "http://leiningen.org/"} "leiningen"
+             [:img {:src "http://leiningen.org/img/leiningen.jpg"}]]
+            [:a {:href "http://www.youtube.com/user/ClojureTV"}
+             [:img {:src "https://developers.google.com/youtube/images/YouTube_logo_standard_white.png"}]]
+            [:a {:href "http://www.reddit.com/r/clojure"} "reddit"
+             [:img {:src "http://icons.iconarchive.com/icons/chrisbanks2/cold-fusion-hd/128/reddit-icon.png"}]]
+            [:a {:href "http://tryclj.com/"} "tryclj"]
+            ;; http://tryclj.com/resources/public/clojure-logo.png
+            ;; #63b132
+            ;; Try
+            ;; 72px
+            ;; color: #5881d8;
+            ;; Clo <em>j</em>ure
+            [:a {:href "http://himera.herokuapp.com/"}
+             "ClojureScript compiler as web service"]
+            [:a {:href "https://www.4clojure.com/"}
+             [:img {:src "https://www.4clojure.com/images/4clj-logo-small.png"}]]
+            [:a {:href "http://clojuredocs.org/"}
+             [:img {:src "http://clojuredocs.org/images/cd_logo.png"}]]]
+           (map (fn [e] [:li e])))]]]
    )
   )
 
 
 (defn main-index-page [ns-info-dic]
   (hiccup.page/html5
+   [:head
+    [:link {:rel "stylesheet" :href "../../resources/css/style.css"}]]
    [:body
-    (for [[k v] ns-info-dic]
-      [:div {:id k :style "float:left;"}
+    [:div {:class "main"}
+     (for [[k v] ns-info-dic]
+       [:div {:id k :style "float:left;"}
 
-       [:h3 [:a {:href k} (string/capitalize (name k))]]
-       [:ul
-        (->> (take 5 v)
-             (map (fn [namespace] [(ns-sym->basename namespace) (ns-sym->title namespace)]))
-             (map (fn [[basename title]] [:li [:a {:href (str "./" (name k) "/" basename ".html")} title]])))
-        [:li [:a {:href k}] "..."]
+        [:h3 [:a {:href k} (string/capitalize (name k))]]
+        [:ul
+         (->> (take 5 v)
+              (map (fn [namespace] [(ns-sym->basename namespace) (ns-sym->title namespace)]))
+              (map (fn [[basename title]] [:li [:a {:href (str "./" (name k) "/" basename ".html")} title]])))
+         [:li [:a {:href k}] "..."]
+         ]
         ]
-       ]
-      )
-    ]
+       )
+     ]]
    )
   )
 
 
 (defn section-index-page [[section sub-page-namespaces :as ns-info]]
   (hiccup.page/html5
+   [:head
+    [:link {:rel "stylesheet" :href "../../resources/css/style.css"}]]
    [:body
-    [:h1 [:a {:href "../"} "public"]]
-    [:h2 section]
-    [:ul
-     (->> sub-page-namespaces
-          (map (fn [namespace]
-                 [(ns-sym->basename namespace) (ns-sym->title namespace)]))
-          (map (fn [[basename title]]
-                 [:li [:a {:href (str "./" basename ".html")} title]])))]]
-   )
-  )
+    [:div {:class "main" :id section}
+
+     [:h1 [:a {:href "../"} "public"]]
+     [:h2 section]
+     [:ul
+      (->> sub-page-namespaces
+           (map (fn [namespace]
+                  [(ns-sym->basename namespace) (ns-sym->title namespace)]))
+           (map (fn [[basename title]]
+                  [:li [:a {:href (str "./" basename ".html")} title]])))
+      ]]]))
 
 
 (defn example-page [in-clj]

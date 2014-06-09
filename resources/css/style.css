@@ -28,6 +28,23 @@ body {
     margin-bottom: 120px;
 }
 
+div.main {
+    max-width: 420px;
+    min-width: 420px;
+    width: 420px;
+    margin-bottom: 120px;
+
+    margin-left: auto;
+    margin-left-value: auto;
+    margin-left-ltr-source: physical;
+    margin-left-rtl-source: physical;
+
+    margin-right: auto;
+    margin-right-value: auto;
+    margin-right-ltr-source: physical;
+    margin-right-rtl-source: physical;
+}
+
 
 table {
     border-collapse: collapse;

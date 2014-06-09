@@ -1,10 +1,11 @@
 (ns clojure-by-example.core
   (:gen-class)
-  (:require [clojure.string :as string]
-            [me.raynes.fs :as fs]
-            [clojure.tools.reader.edn :as edn]
-            [clojure-by-example.page :as page]
-            ))
+  (:require
+   [clojure.string :as string]
+   [me.raynes.fs :as fs]
+   [clojure.tools.reader.edn :as edn]
+   [clojure-by-example.page :as page]
+   ))
 
 
 (def info-fname* "examples.edn")
