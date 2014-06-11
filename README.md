@@ -16,8 +16,7 @@
 * hiccup : https://github.com/weavejester/hiccup
 * fs : https://github.com/Raynes/fs
 * markdwon4j : https://code.google.com/p/markdown4j/
-
-* ?stencil : https://github.com/davidsantiago/stencil
+* Selmer : https://github.com/yogthos/Selmer
 
 
 # html

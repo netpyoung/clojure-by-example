@@ -11,7 +11,7 @@
    ;; for encoding.
    [org.clojure/tools.reader "0.8.4"]
    [hiccup "1.0.5"]
-   [stencil "0.3.3"]
+   [selmer "0.6.6"]
    [org.commonjava.googlecode.markdown4j/markdown4j "2.2-cj-1.0"]
 
    [org.clojure/tools.namespace "0.2.4"]

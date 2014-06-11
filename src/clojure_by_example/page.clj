@@ -4,11 +4,13 @@
 
   (:require
    [clojure.string :as string]
+   [selmer.parser :as selmer]
    [marginalia.core :as marginalia]
    [marginalia.hiccup]
    [hiccup.core :as hiccup]
    [me.raynes.fs :as fs]
    [hiccup.page]
+   [hiccup.compiler]
    [clojure.tools.namespace.find :as find]))
 
 
@@ -91,43 +93,34 @@
 
 ;; pages
 (defn main-page [ns-info]
-  (hiccup.page/html5
-   [:head
-    [:meta {:charset "utf-8"}]
-    [:link {:rel "icon" :type "image/x-icon"
-            :href "resources/favicon.ico"}]
-    [:link {:rel "stylesheet" :href "../../resources/css/style.css"}]
-    ]
-   [:body
-    [:div {:class "main"}
+  (selmer/render-file
+   "tpl/main.tpl"
 
-     [:h1 "Under Construction"]
-     [:ul
-      (->> [[:a {:href "public"} "public"]
-            [:a {:href "http://clojure.org/"} "clojure"
-             [:img {:src "http://clojure.org/file/view/clojure-icon.gif"}]]
-            [:a {:href "http://leiningen.org/"} "leiningen"
-             [:img {:src "http://leiningen.org/img/leiningen.jpg"}]]
-            [:a {:href "http://www.youtube.com/user/ClojureTV"}
-             [:img {:src "https://developers.google.com/youtube/images/YouTube_logo_standard_white.png"}]]
-            [:a {:href "http://www.reddit.com/r/clojure"} "reddit"
-             [:img {:src "http://icons.iconarchive.com/icons/chrisbanks2/cold-fusion-hd/128/reddit-icon.png"}]]
-            [:a {:href "http://tryclj.com/"} "tryclj"]
-            ;; http://tryclj.com/resources/public/clojure-logo.png
-            ;; #63b132
-            ;; Try
-            ;; 72px
-            ;; color: #5881d8;
-            ;; Clo <em>j</em>ure
-            [:a {:href "http://himera.herokuapp.com/"}
-             "ClojureScript compiler as web service"]
-            [:a {:href "https://www.4clojure.com/"}
-             [:img {:src "https://www.4clojure.com/images/4clj-logo-small.png"}]]
-            [:a {:href "http://clojuredocs.org/"}
-             [:img {:src "http://clojuredocs.org/images/cd_logo.png"}]]]
-           (map (fn [e] [:li e])))]]]
-   )
-  )
+   {:items
+    (->> [[:a {:href "public"} "public"]
+          [:a {:href "http://clojure.org/"} "clojure"
+           [:img {:src "http://clojure.org/file/view/clojure-icon.gif"}]]
+          [:a {:href "http://leiningen.org/"} "leiningen"
+           [:img {:src "http://leiningen.org/img/leiningen.jpg"}]]
+          [:a {:href "http://www.youtube.com/user/ClojureTV"}
+           [:img {:src "https://developers.google.com/youtube/images/YouTube_logo_standard_white.png"}]]
+          [:a {:href "http://www.reddit.com/r/clojure"} "reddit"
+           [:img {:src "http://icons.iconarchive.com/icons/chrisbanks2/cold-fusion-hd/128/reddit-icon.png"}]]
+          [:a {:href "http://tryclj.com/"} "tryclj"]
+          ;; http://tryclj.com/resources/public/clojure-logo.png
+          ;; #63b132
+          ;; Try
+          ;; 72px
+          ;; color: #5881d8;
+          ;; Clo <em>j</em>ure
+          [:a {:href "http://himera.herokuapp.com/"}
+           "ClojureScript compiler as web service"]
+          [:a {:href "https://www.4clojure.com/"}
+           [:img {:src "https://www.4clojure.com/images/4clj-logo-small.png"}]]
+          [:a {:href "http://clojuredocs.org/"}
+           [:img {:src "http://clojuredocs.org/images/cd_logo.png"}]]]
+         (map hiccup.compiler/compile-html)
+         (map eval))}))
 
 
 (defn main-index-page [ns-info-dic]
