@@ -1,16 +1,15 @@
 (ns clojure-by-example.core
   (:gen-class)
+
   (:require
-   [clojure.string :as string]
    [me.raynes.fs :as fs]
    [clojure.tools.reader.edn :as edn]
-   [clojure-by-example.page :as page]
-   ))
+   [clojure-by-example.page :as page]))
 
 
-(def info-fname* "examples.edn")
-(def example-base-dir* "examples/src")
-(def public-base-dir* "public")
+(def +info-fname+ "examples.edn")
+(def +example-base-dir+ "examples/src")
+(def +public-base-dir+ "public")
 
 
 (defn ensure-dir!
@@ -23,7 +22,13 @@
 
 
 (defn raw-info->ns-info
+  "
+  (raw-info->ns-info {:a [:b-c]})
+  ;=> {:a (\"a.b-c\")}
+  "
+
   [info-dic]
+
   (->> info-dic
        (map (fn [[k v]]
               [k (->> v
@@ -39,7 +44,7 @@
   [ns-sym]
 
   (->> (name ns-sym)
-       (str example-base-dir* "/")
+       (str +example-base-dir+ "/")
        (fs/ns-path)
        (str)))
 
@@ -51,7 +56,7 @@
   "
   [ns-sym]
 
-  (let [v (str public-base-dir* "/" (name ns-sym))]
+  (let [v (str +public-base-dir+ "/" (name ns-sym))]
     (str (fs/parent (fs/ns-path v))
          "/"
          (fs/base-name (fs/ns-path v) true) ".html")))
@@ -66,33 +71,33 @@
 
 
 (defn -main []
-  (let [ns-info-dic (->> info-fname*
+  ;; main page.
+  (->> (page/main-page)
+       (spit "index.html"))
+
+  (let [ns-info-dic (->> +info-fname+
                          (slurp)
                          (edn/read-string)
                          (raw-info->ns-info))]
 
-    ;; main page.
-    (->> (page/main-page ns-info-dic)
-         (spit "index.html"))
-
     ;; main index page.
-    (ensure-dir! public-base-dir*)
+    (ensure-dir! +public-base-dir+)
     (->> (page/main-index-page ns-info-dic)
-         (spit (str public-base-dir* "/" "index.html")))
+         (spit (str +public-base-dir+ "/" "index.html")))
 
-    ;; example pages.
+
     (doseq [[section sub-page-namespaces :as ns-info] ns-info-dic]
-      (ensure-dir! (str public-base-dir* "/" (name section)))
 
+      ;; example index page.
+      (ensure-dir! (str +public-base-dir+ "/" (name section)))
       (->> (page/section-index-page ns-info)
-           (spit (str public-base-dir* "/" (name section) "/index.html")))
+           (spit (str +public-base-dir+ "/" (name section) "/index.html")))
+
+      ;; example pages.
       (doseq [[in out] (->> sub-page-namespaces
                             (map (fn [namespace]
                                    [(ns->in-clj-path namespace)
                                     (ns->out-html-path namespace)])))]
         (ensure-dir! (fs/parent out))
 
-        (clj->html in out))
-      )
-    )
-  )
+        (clj->html in out)))))

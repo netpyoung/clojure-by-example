@@ -91,8 +91,11 @@
                 (marginalia.hiccup/escape-html (str ";; " (:raw section))))
                "")]]]])
 
-;; pages
-(defn main-page [ns-info]
+
+;;; ======
+;;; pages.
+
+(defn main-page []
   (selmer/render-file
    "tpl/main.tpl"
 
@@ -137,6 +140,7 @@
          (->> (take 5 v)
               (map (fn [namespace] [(ns-sym->basename namespace) (ns-sym->title namespace)]))
               (map (fn [[basename title]] [:li [:a {:href (str "./" (name k) "/" basename ".html")} title]])))
+
          [:li [:a {:href k}] "..."]
          ]
         ]
