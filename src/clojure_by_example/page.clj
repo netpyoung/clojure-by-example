@@ -22,10 +22,9 @@
 
 (defn is-debug-comment?
   [section]
-  (and (= (:type section)
-          :comment)
+  (and (= (:type section) :comment)
        (->> section
-            (:raw)
+            :raw
             (re-find #"^(>>|=>)")
             (some?))))
 

@@ -1,24 +1,22 @@
 (ns clojure-by-example.core
-  (:gen-class)
-
   (:require
    [me.raynes.fs :as fs]
    [clojure.tools.reader.edn :as edn]
-   [clojure-by-example.page :as page]))
+   [clojure-by-example.page :as page])
+  (:gen-class))
 
 
-(def +info-fname+ "examples.edn")
-(def +example-base-dir+ "examples/src")
-(def +public-base-dir+ "public")
+(def INFO_FNAME "examples.edn")
+(def EXAMPLE_BASE_DIR "examples/src")
+(def PUBLIC_BASE_DIR "public")
 
 
 (defn ensure-dir!
   [target-dir]
 
-  (when-not (fs/exists? target-dir)
-    (when-not (fs/mkdirs target-dir)
-      (throw (Exception.
-              (str "[ERROR] couldn't create target dir!" target-dir))))))
+  (or (fs/exists? target-dir)
+      (fs/mkdirs target-dir)
+      (throw (Exception. (str "[ERROR] couldn't create target dir!" target-dir)))))
 
 
 (defn raw-info->ns-info
@@ -31,8 +29,7 @@
 
   (->> info-dic
        (map (fn [[k v]]
-              [k (->> v
-                      (map #(str (name k) "." (name %))))]))
+              [k (map #(str (name k) "." (name %)) v)]))
        (into {})))
 
 
@@ -44,7 +41,7 @@
   [ns-sym]
 
   (->> (name ns-sym)
-       (str +example-base-dir+ "/")
+       (str EXAMPLE_BASE_DIR "/")
        (fs/ns-path)
        (str)))
 
@@ -56,10 +53,13 @@
   "
   [ns-sym]
 
-  (let [v (str +public-base-dir+ "/" (name ns-sym))]
-    (str (fs/parent (fs/ns-path v))
+  (let [ns-path (->> (name ns-sym)
+                     (str PUBLIC_BASE_DIR "/")
+                     (fs/ns-path))]
+
+    (str (fs/parent ns-path)
          "/"
-         (fs/base-name (fs/ns-path v) true) ".html")))
+         (fs/base-name ns-path true) ".html")))
 
 
 (defn clj->html
@@ -75,29 +75,28 @@
   (->> (page/main-page)
        (spit "index.html"))
 
-  (let [ns-info-dic (->> +info-fname+
+  (let [ns-info-dic (->> INFO_FNAME
                          (slurp)
                          (edn/read-string)
                          (raw-info->ns-info))]
 
     ;; main index page.
-    (ensure-dir! +public-base-dir+)
+    (ensure-dir! PUBLIC_BASE_DIR)
     (->> (page/main-index-page ns-info-dic)
-         (spit (str +public-base-dir+ "/" "index.html")))
+         (spit (str PUBLIC_BASE_DIR "/" "index.html")))
 
 
     (doseq [[section sub-page-namespaces :as ns-info] ns-info-dic]
 
       ;; example index page.
-      (ensure-dir! (str +public-base-dir+ "/" (name section)))
+      (ensure-dir! (str PUBLIC_BASE_DIR "/" (name section)))
       (->> (page/section-index-page ns-info)
-           (spit (str +public-base-dir+ "/" (name section) "/index.html")))
+           (spit (str PUBLIC_BASE_DIR "/" (name section) "/index.html")))
 
       ;; example pages.
-      (doseq [[in out] (->> sub-page-namespaces
-                            (map (fn [namespace]
-                                   [(ns->in-clj-path namespace)
-                                    (ns->out-html-path namespace)])))]
-        (ensure-dir! (fs/parent out))
+      (doseq [namespace sub-page-namespaces]
+        (let [in  (ns->in-clj-path namespace)
+              out (ns->out-html-path namespace)]
+          (ensure-dir! (fs/parent out))
 
-        (clj->html in out)))))
+          (clj->html in out))))))
