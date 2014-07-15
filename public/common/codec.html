@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
     <link href="../../resources/css/style.css" rel="stylesheet">
-
     
 <link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
 <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
@@ -15,7 +14,6 @@
 
   <body>
     <h1>Under Construction</h1>
-
     
 <div class="example-header">
   <h2><a href="./">common</a></h2>
@@ -27,107 +25,67 @@
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(ns common.codec)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(ns common.codec)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>https://gobyexample.com/base64-encoding</p>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure"></code></pre>
-      </td>
+      <td class="docs"><p>https://gobyexample.com/base64-encoding</p>
+</td>
+      <td class="code"><pre><code class="clojure"></code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>https://github.com/clojure/data.codec</p>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure"></code></pre>
-      </td>
+      <td class="docs"><p>https://github.com/clojure/data.codec</p>
+</td>
+      <td class="code"><pre><code class="clojure"></code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(require '[clojure.data.codec.base64 :as b64])</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(require '[clojure.data.codec.base64 :as b64])</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(-&gt;&gt; &quot;abc123!?$*&amp;()'-=@~&quot;
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(-&gt;&gt; &quot;abc123!?$*&amp;()'-=@~&quot;
      (map byte)
      (byte-array)
      (b64/encode)
-     (String.))</code></pre>
-      </td>
+     (String.))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; &quot;YWJjMTIzIT8kKiYoKSctPUB+&quot;</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; &quot;YWJjMTIzIT8kKiYoKSctPUB+&quot;</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(-&gt;&gt; &quot;YWJjMTIzIT8kKiYoKSctPUB+&quot;
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(-&gt;&gt; &quot;YWJjMTIzIT8kKiYoKSctPUB+&quot;
      (map byte)
      (byte-array)
      (b64/decode)
-     (String.))</code></pre>
-      </td>
+     (String.))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; &quot;abc123!?$*&amp;()'-=@~&quot;</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; &quot;abc123!?$*&amp;()'-=@~&quot;</code></pre></td>
     </tr>
   </table>
   

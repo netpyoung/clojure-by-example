@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
     <link href="../../resources/css/style.css" rel="stylesheet">
-
     
 <link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
 <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
@@ -15,7 +14,6 @@
 
   <body>
     <h1>Under Construction</h1>
-
     
 <div class="example-header">
   <h2><a href="./">async</a></h2>
@@ -27,142 +25,87 @@
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(ns async.timeout)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(ns async.timeout)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>https://gobyexample.com/timeouts</p>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure"></code></pre>
-      </td>
+      <td class="docs"><p>https://gobyexample.com/timeouts</p>
+</td>
+      <td class="code"><pre><code class="clojure"></code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! timeout chan alt! go go-loop put! alts! alts!!]])</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! timeout chan alt! go go-loop put! alts! alts!!]])</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(def c1 (chan 1))</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(def c1 (chan 1))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(go (&lt;! (timeout (* 2 1000)))
-    (&gt;! c1 &quot;result 1&quot;))</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(go (&lt;! (timeout (* 2 1000)))
+    (&gt;! c1 &quot;result 1&quot;))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(let [[v ch] (alts!! [c1 (timeout 1000)])]
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(let [[v ch] (alts!! [c1 (timeout 1000)])]
   (if v
     (println v)
-    (println &quot;timeout 1&quot;)))</code></pre>
-      </td>
+    (println &quot;timeout 1&quot;)))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; &gt;&gt; timeout 1</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; &gt;&gt; timeout 1</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(def c2 (chan 1))</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(def c2 (chan 1))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(go (&lt;! (timeout (* 2 1000)))
-    (&gt;! c2 &quot;result 2&quot;))</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(go (&lt;! (timeout (* 2 1000)))
+    (&gt;! c2 &quot;result 2&quot;))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(let [[v ch] (alts!! [c2 (timeout 3000)])]
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(let [[v ch] (alts!! [c2 (timeout 3000)])]
   (if v
     (println v)
-    (println &quot;timeout 2&quot;)))</code></pre>
-      </td>
+    (println &quot;timeout 2&quot;)))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; &gt;&gt; result 2</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; &gt;&gt; result 2</code></pre></td>
     </tr>
   </table>
   

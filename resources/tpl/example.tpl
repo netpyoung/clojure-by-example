@@ -18,13 +18,8 @@
   {% for doctable in doctables %}
   <table>
     <tr>
-      <td class="docs">
-        {{doctable.docs|safe}}
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">{{doctable.code|safe}}</code></pre>
-      </td>
+      <td class="docs">{{doctable.docs|safe}}</td>
+      <td class="code"><pre><code class="clojure">{{doctable.code|safe}}</code></pre></td>
     </tr>
   </table>
   {% endfor %}

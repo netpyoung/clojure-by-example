@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
     <link href="../../resources/css/style.css" rel="stylesheet">
-
     
 <link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
 <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
@@ -15,7 +14,6 @@
 
   <body>
     <h1>Under Construction</h1>
-
     
 <div class="example-header">
   <h2><a href="./">common</a></h2>
@@ -27,152 +25,97 @@
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(ns common.switch)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(ns common.switch)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(def i 2)
-(println &quot;write &quot; i &quot; as &quot;)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(def i 2)
+(println &quot;write &quot; i &quot; as &quot;)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; &gt;&gt; write  2  as
-=&gt; nil</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; &gt;&gt; write  2  as
+=&gt; nil</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(case i
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(case i
   1 (println &quot;one&quot;)
   2 (println &quot;two&quot;)
   3 (println &quot;three&quot;)
-  nil)</code></pre>
-      </td>
+  nil)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; &gt;&gt; two
-=&gt; nil</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; &gt;&gt; two
+=&gt; nil</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>http://www.java2s.com/Code/JavaAPI/java.util/CalendarSUNDAY.htm</p>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure"></code></pre>
-      </td>
+      <td class="docs"><p>http://www.java2s.com/Code/JavaAPI/java.util/CalendarSUNDAY.htm</p>
+</td>
+      <td class="code"><pre><code class="clojure"></code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(import [java.util Calendar Date])</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(import [java.util Calendar Date])</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(case (-&gt; (Date.) bean :day)
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(case (-&gt; (Date.) bean :day)
 
   #{Calendar/SATURDAY Calendar/SUNDAY}
   (println &quot;it's the weekend&quot;)
 
-  (println &quot;it's a weekday&quot;))</code></pre>
-      </td>
+  (println &quot;it's a weekday&quot;))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; &gt;&gt; it's a weekday
-=&gt; nil</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; &gt;&gt; it's a weekday
+=&gt; nil</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(cond
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(cond
  (&lt; (-&gt; (Date.) bean :hours) 12)
  (println &quot;it's before noon&quot;)
 
- (println &quot;it's after noon&quot;))</code></pre>
-      </td>
+ (println &quot;it's after noon&quot;))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>https://github.com/clj-time/clj-time</p>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure"></code></pre>
-      </td>
+      <td class="docs"><p>https://github.com/clj-time/clj-time</p>
+</td>
+      <td class="code"><pre><code class="clojure"></code></pre></td>
     </tr>
   </table>
   

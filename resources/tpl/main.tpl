@@ -1,17 +1,15 @@
 {% extends "tpl/default.tpl" %}
+
 {% block contents %}
 <div class="main">
+  <h1><a href="public">public</a></h1>
+
   <ul>
     {% for item in items %}
-    <li>{{item|safe}}</li>
+    <li>
+      <a href="{{item.link}}">{% if item.title %}{{item.title}}{% endif %}{% if item.img %}<img src="{{item.img}}" />{% endif %}</a>
+    </li>
     {% endfor %}
   </ul>
 </div>
-<!--
-main-page
-main-index-page
-section-index-page
-example-page
--->
-
 {% endblock %}

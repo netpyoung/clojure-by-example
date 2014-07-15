@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
     <link href="../../resources/css/style.css" rel="stylesheet">
-
     
 <link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
 <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
@@ -15,7 +14,6 @@
 
   <body>
     <h1>Under Construction</h1>
-
     
 <div class="example-header">
   <h2><a href="./">common</a></h2>
@@ -27,206 +25,121 @@
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(ns common.record)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(ns common.record)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(defrecord Person [name age])</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(defrecord Person [name age])</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(Person. &quot;Bob&quot; 20)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(Person. &quot;Bob&quot; 20)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; #common.record.Person{:name &quot;Bob&quot;, :age 20}</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; #common.record.Person{:name &quot;Bob&quot;, :age 20}</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(map-&gt;Person {:name &quot;Alice&quot;, :age 30})</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(map-&gt;Person {:name &quot;Alice&quot;, :age 30})</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; #common.record.Person{:name &quot;Alice&quot;, :age 30}</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; #common.record.Person{:name &quot;Alice&quot;, :age 30}</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(map-&gt;Person {:name &quot;Fred&quot;})</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(map-&gt;Person {:name &quot;Fred&quot;})</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; #common.record.Person{:name &quot;Fred&quot;, :age nil}</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; #common.record.Person{:name &quot;Fred&quot;, :age nil}</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(def s (map-&gt;Person {:name &quot;Sean&quot;, :age 50}))</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(def s (map-&gt;Person {:name &quot;Sean&quot;, :age 50}))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(:name s)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(:name s)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; &quot;Sean&quot;</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; &quot;Sean&quot;</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(:age s)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(:age s)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; 50</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; 50</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(assoc s :age 51)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(assoc s :age 51)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; #common.record.Person{:name &quot;Sean&quot;, :age 51}</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; #common.record.Person{:name &quot;Sean&quot;, :age 51}</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(println s)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(println s)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; &gt;&gt; #common.record.Person{:name Sean, :age 50}
-=&gt; nil</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; &gt;&gt; #common.record.Person{:name Sean, :age 50}
+=&gt; nil</code></pre></td>
     </tr>
   </table>
   

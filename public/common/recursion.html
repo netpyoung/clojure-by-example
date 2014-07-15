@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
     <link href="../../resources/css/style.css" rel="stylesheet">
-
     
 <link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
 <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
@@ -15,7 +14,6 @@
 
   <body>
     <h1>Under Construction</h1>
-
     
 <div class="example-header">
   <h2><a href="./">common</a></h2>
@@ -27,93 +25,58 @@
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(ns common.recursion)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(ns common.recursion)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(defn fact [n]
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(defn fact [n]
   (if (zero? n)
     1
-    (* n (fact (dec n)))))</code></pre>
-      </td>
+    (* n (fact (dec n)))))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(fact 7)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(fact 7)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; 5040</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; 5040</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>http://stackoverflow.com/questions/1662336/clojure-simple-factorial-causes-stack-overflow</p>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(defn fact [x]
+      <td class="docs"><p>http://stackoverflow.com/questions/1662336/clojure-simple-factorial-causes-stack-overflow</p>
+</td>
+      <td class="code"><pre><code class="clojure">(defn fact [x]
   (loop [n x f 1]
     (if (= n 1)
       f
-      (recur (dec n) (* f n)))))</code></pre>
-      </td>
+      (recur (dec n) (* f n)))))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(fact 7)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(fact 7)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; 5040</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; 5040</code></pre></td>
     </tr>
   </table>
   

@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
     <link href="../../resources/css/style.css" rel="stylesheet">
-
     
 <link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
 <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
@@ -15,7 +14,6 @@
 
   <body>
     <h1>Under Construction</h1>
-
     
 <div class="example-header">
   <h2><a href="./">common</a></h2>
@@ -27,285 +25,170 @@
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(ns common.url-parsing)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(ns common.url-parsing)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>https://gobyexample.com/url-parsing
+      <td class="docs"><p>https://gobyexample.com/url-parsing
 <br  />https://github.com/wtetzner/exploding-fish</p>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure"></code></pre>
-      </td>
+</td>
+      <td class="code"><pre><code class="clojure"></code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>http://docs.oracle.com/javase/7/docs/api/java/net/URI.html</p>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure"></code></pre>
-      </td>
+      <td class="docs"><p>http://docs.oracle.com/javase/7/docs/api/java/net/URI.html</p>
+</td>
+      <td class="code"><pre><code class="clojure"></code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>http://en.wikipedia.org/wiki/URI_scheme</p>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure"></code></pre>
-      </td>
+      <td class="docs"><p>http://en.wikipedia.org/wiki/URI_scheme</p>
+</td>
+      <td class="code"><pre><code class="clojure"></code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>https://github.com/cemerick/url</p>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(require '[cemerick.url :as url])</code></pre>
-      </td>
+      <td class="docs"><p>https://github.com/cemerick/url</p>
+</td>
+      <td class="code"><pre><code class="clojure">(require '[cemerick.url :as url])</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(require '[org.bovinegenius [exploding-fish :as uri]])</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(require '[org.bovinegenius [exploding-fish :as uri]])</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(def s &quot;postgres://user:pass@host.com:5432/path?k=v#f&quot;)
-(def u (uri/uri s))</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(def s &quot;postgres://user:pass@host.com:5432/path?k=v#f&quot;)
+(def u (uri/uri s))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(:scheme u)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(:scheme u)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; &quot;postgres&quot;</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; &quot;postgres&quot;</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(:user-info u)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(:user-info u)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; &quot;user:pass&quot;</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; &quot;user:pass&quot;</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(:host u)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(:host u)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; &quot;host.com&quot;</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; &quot;host.com&quot;</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(:port u)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(:port u)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; 5432</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; 5432</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(:path u)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(:path u)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; &quot;/path&quot;</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; &quot;/path&quot;</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(:fragment u)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(:fragment u)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; &quot;f&quot;</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; &quot;f&quot;</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(:query u)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(:query u)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; &quot;k=v&quot;</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; &quot;k=v&quot;</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(-&gt;&gt; &quot;k&quot;
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(-&gt;&gt; &quot;k&quot;
      (get (-&gt;&gt; (uri/query-pairs u)
-               (into {}))))</code></pre>
-      </td>
+               (into {}))))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; &quot;v&quot;</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; &quot;v&quot;</code></pre></td>
     </tr>
   </table>
   

@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
     <link href="../../resources/css/style.css" rel="stylesheet">
-
     
 <link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
 <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
@@ -15,7 +14,6 @@
 
   <body>
     <h1>Under Construction</h1>
-
     
 <div class="example-header">
   <h2><a href="./">async</a></h2>
@@ -27,106 +25,66 @@
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(ns async.channel-synchronization)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(ns async.channel-synchronization)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! timeout chan alt! go put!]])</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! timeout chan alt! go put!]])</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>https://gobyexample.com/channel-synchronization</p>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure"></code></pre>
-      </td>
+      <td class="docs"><p>https://gobyexample.com/channel-synchronization</p>
+</td>
+      <td class="code"><pre><code class="clojure"></code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(defn worker [done-chan]
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(defn worker [done-chan]
   (println &quot;working...&quot;)
   (timeout 1000)
   (println &quot;done&quot;)
-  (put! done-chan true))</code></pre>
-      </td>
+  (put! done-chan true))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(def done (chan 1))
-(go (worker done))</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(def done (chan 1))
+(go (worker done))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; =&gt; #&lt;ManyToManyChannel clojure.core.async.impl.channels.ManyToManyChannel@5be88c45&gt;
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; =&gt; #&lt;ManyToManyChannel clojure.core.async.impl.channels.ManyToManyChannel@5be88c45&gt;
 &gt;&gt; working...
-&gt;&gt; done</code></pre>
-      </td>
+&gt;&gt; done</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(println (&lt;!! done))</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(println (&lt;!! done))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; &gt;&gt; true
-=&gt; nil</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; &gt;&gt; true
+=&gt; nil</code></pre></td>
     </tr>
   </table>
   

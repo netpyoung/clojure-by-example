@@ -98,31 +98,29 @@
   (selmer/render-file
    "tpl/main.tpl"
 
-   {:items
-    (->> [[:a {:href "public"} "public"]
-          [:a {:href "http://clojure.org/"} "clojure"
-           [:img {:src "http://clojure.org/file/view/clojure-icon.gif"}]]
-          [:a {:href "http://leiningen.org/"} "leiningen"
-           [:img {:src "http://leiningen.org/img/leiningen.jpg"}]]
-          [:a {:href "http://www.youtube.com/user/ClojureTV"}
-           [:img {:src "https://developers.google.com/youtube/images/YouTube_logo_standard_white.png"}]]
-          [:a {:href "http://www.reddit.com/r/clojure"} "reddit"
-           [:img {:src "http://icons.iconarchive.com/icons/chrisbanks2/cold-fusion-hd/128/reddit-icon.png"}]]
-          [:a {:href "http://tryclj.com/"} "tryclj"]
-          ;; http://tryclj.com/resources/public/clojure-logo.png
-          ;; #63b132
-          ;; Try
-          ;; 72px
-          ;; color: #5881d8;
-          ;; Clo <em>j</em>ure
-          [:a {:href "http://himera.herokuapp.com/"}
-           "ClojureScript compiler as web service"]
-          [:a {:href "https://www.4clojure.com/"}
-           [:img {:src "https://www.4clojure.com/images/4clj-logo-small.png"}]]
-          [:a {:href "http://clojuredocs.org/"}
-           [:img {:src "http://clojuredocs.org/images/cd_logo.png"}]]]
-         (map hiccup.compiler/compile-html)
-         (map eval))}))
+   {:items [{:link "http://clojure.org/"
+             :img "http://clojure.org/file/view/clojure-icon.gif"}
+            {:link "http://leiningen.org/"
+             :img "http://leiningen.org/img/leiningen.jpg"}
+            {:link "http://www.youtube.com/user/ClojureTV"
+             :img "https://developers.google.com/youtube/images/YouTube_logo_standard_white.png"}
+            {:link "http://www.reddit.com/r/clojure"
+             :img "http://icons.iconarchive.com/icons/chrisbanks2/cold-fusion-hd/128/reddit-icon.png"}
+
+            ;; "http://tryclj.com/"
+            ;; http://tryclj.com/resources/public/clojure-logo.png
+            ;; #63b132
+            ;; Try
+            ;; 72px
+            ;; color: #5881d8;
+            ;; Clo <em>j</em>ure
+
+            {:link "http://himera.herokuapp.com/"
+             :title "ClojureScript compiler as web service"}
+            {:link "https://www.4clojure.com/"
+             :img "https://www.4clojure.com/images/4clj-logo-small.png"}
+            {:link "http://clojuredocs.org/"
+             :img "http://clojuredocs.org/images/cd_logo.png"}]}))
 
 
 (defn main-index-page

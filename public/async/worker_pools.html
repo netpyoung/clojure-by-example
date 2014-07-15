@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
     <link href="../../resources/css/style.css" rel="stylesheet">
-
     
 <link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
 <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
@@ -15,7 +14,6 @@
 
   <body>
     <h1>Under Construction</h1>
-
     
 <div class="example-header">
   <h2><a href="./">async</a></h2>
@@ -27,153 +25,99 @@
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(ns async.worker-pools)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(ns async.worker-pools)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>https://gobyexample.com/worker-pools</p>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure"></code></pre>
-      </td>
+      <td class="docs"><p>https://gobyexample.com/worker-pools</p>
+</td>
+      <td class="code"><pre><code class="clojure"></code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>(-&raquo; (async/to-chan [1 2 3 4])</p>
+      <td class="docs"><p>(-&raquo; (async/to-chan [1 2 3 4])</p>
 <pre><code> (async/map&lt; identity )
  (async/into [] )
  (&lt;!! )
  (println ))
 </code></pre>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure"></code></pre>
-      </td>
+</td>
+      <td class="code"><pre><code class="clojure"></code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! &gt;!! timeout chan alt! go go-loop put! pipe close! map&lt;]])</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! &gt;!! timeout chan alt! go go-loop put! pipe close! map&lt;]])</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(defn worker [id jobs results]
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(defn worker [id jobs results]
   (go-loop []
     (when-let [j (&lt;! jobs)]
       (println &quot;worker&quot; id, &quot;processing job&quot; j)
       (&lt;! (timeout 3000))
       (&gt;! results (* j 2))
-      (recur))))</code></pre>
-      </td>
+      (recur))))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>http://tgk.github.io/2013/10/inspect-core-async-channels.html</p>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(def jobs* (chan 100))
-(def results* (chan 100))</code></pre>
-      </td>
+      <td class="docs"><p>http://tgk.github.io/2013/10/inspect-core-async-channels.html</p>
+</td>
+      <td class="code"><pre><code class="clojure">(def jobs* (chan 100))
+(def results* (chan 100))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(dotimes [w 3]
-  (worker w jobs* results*))</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(dotimes [w 3]
+  (worker w jobs* results*))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(dotimes [j 9]
-  (&gt;!! jobs* j))</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(dotimes [j 9]
+  (&gt;!! jobs* j))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(close! jobs*)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(close! jobs*)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(-&gt;&gt; results*
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(-&gt;&gt; results*
      (async/take 9)
      (async/into [])
      (&lt;!!)
-     (println &quot;result:&quot; ))</code></pre>
-      </td>
+     (println &quot;result:&quot; ))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; &gt;&gt; worker 0 processing job 0
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; &gt;&gt; worker 0 processing job 0
 &gt;&gt; worker 1 processing job 1
 &gt;&gt; worker 2 processing job 2
 &gt;&gt; worker 0 processing job 3
@@ -182,20 +126,14 @@
 &gt;&gt; worker 0 processing job 6
 &gt;&gt; worker 1 processing job 7
 &gt;&gt; worker 2 processing job 8
-=&gt; nil</code></pre>
-      </td>
+=&gt; nil</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; &gt;&gt; result: [0 2 4 6 8 10 12 14 16]</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; &gt;&gt; result: [0 2 4 6 8 10 12 14 16]</code></pre></td>
     </tr>
   </table>
   

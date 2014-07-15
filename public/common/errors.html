@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
     <link href="../../resources/css/style.css" rel="stylesheet">
-
     
 <link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
 <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
@@ -15,7 +14,6 @@
 
   <body>
     <h1>Under Construction</h1>
-
     
 <div class="example-header">
   <h2><a href="./">common</a></h2>
@@ -27,111 +25,71 @@
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(ns common.errors)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(ns common.errors)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>https://gobyexample.com/panic
+      <td class="docs"><p>https://gobyexample.com/panic
 <br  />https://gobyexample.com/defer</p>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure"></code></pre>
-      </td>
+</td>
+      <td class="code"><pre><code class="clojure"></code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        <p>http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html
+      <td class="docs"><p>http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html
 <br  />http://clojuredocs.org/clojure_core/clojure.core/try
 <br  />http://stackoverflow.com/questions/5459865/how-can-i-throw-an-exception-in-clojure</p>
-
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure"></code></pre>
-      </td>
+</td>
+      <td class="code"><pre><code class="clojure"></code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(defn myDivision [x y]
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(defn myDivision [x y]
   (try
     (/ x y)
     (catch ArithmeticException e
       (println &quot;Exception message: &quot; (.getMessage e)))
     (finally
-      (println &quot;Done.&quot;))))</code></pre>
-      </td>
+      (println &quot;Done.&quot;))))</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(myDivision 4 2)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(myDivision 4 2)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; &gt;&gt; Done.
-=&gt; 2</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; &gt;&gt; Done.
+=&gt; 2</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(myDivision 4 0)</code></pre>
-      </td>
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">(myDivision 4 0)</code></pre></td>
     </tr>
   </table>
   
   <table>
     <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; &gt;&gt; Exception message:  Divide by zero
+      <td class="docs"></td>
+      <td class="code"><pre><code class="clojure">;; &gt;&gt; Exception message:  Divide by zero
 &gt;&gt; Done.
-=&gt; nil</code></pre>
-      </td>
+=&gt; nil</code></pre></td>
     </tr>
   </table>
   
