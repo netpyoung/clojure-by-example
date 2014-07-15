@@ -126,27 +126,12 @@
 
 
 (defn main-index-page [ns-info-dic]
-  (hiccup.page/html5
-   [:head
-    [:link {:rel "stylesheet" :href "../../resources/css/style.css"}]]
-   [:body
-    [:div {:class "main"}
-     (for [[k v] ns-info-dic]
-       [:div {:id k :style "float:left;"}
+  (selmer/render-file
+   "tpl/main-index.tpl"
 
-        [:h3 [:a {:href k} (string/capitalize (name k))]]
-        [:ul
-         (->> (take 5 v)
-              (map (fn [namespace] [(ns-sym->basename namespace) (ns-sym->title namespace)]))
-              (map (fn [[basename title]] [:li [:a {:href (str "./" (name k) "/" basename ".html")} title]])))
-
-         [:li [:a {:href k}] "..."]
-         ]
-        ]
-       )
-     ]]
-   )
-  )
+   {:items
+    (for [[k v] ns-info-dic]
+      {:section (name k)})}))
 
 
 (defn section-index-page [[section sub-page-namespaces :as ns-info]]
