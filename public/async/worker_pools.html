@@ -40,7 +40,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;https://gobyexample.com/worker-pools&lt;/p&gt;
+        <p>https://gobyexample.com/worker-pools</p>
 
       </td>
 
@@ -53,12 +53,12 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;(-&amp;raquo; (async/to-chan [1 2 3 4])&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; (async/map&amp;lt; identity )
+        <p>(-&raquo; (async/to-chan [1 2 3 4])</p>
+<pre><code> (async/map&lt; identity )
  (async/into [] )
- (&amp;lt;!! )
+ (&lt;!! )
  (println ))
-&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 
       </td>
 
@@ -75,7 +75,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(require &#39;[clojure.core.async :as async :refer [&amp;lt;! &amp;gt;! &amp;lt;!! &amp;gt;!! timeout chan alt! go go-loop put! pipe close! map&amp;lt;]])</code></pre>
+        <pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! &gt;!! timeout chan alt! go go-loop put! pipe close! map&lt;]])</code></pre>
       </td>
     </tr>
   </table>
@@ -89,10 +89,10 @@
       <td class="code">
         <pre><code class="clojure">(defn worker [id jobs results]
   (go-loop []
-    (when-let [j (&amp;lt;! jobs)]
-      (println &amp;quot;worker&amp;quot; id, &amp;quot;processing job&amp;quot; j)
-      (&amp;lt;! (timeout 3000))
-      (&amp;gt;! results (* j 2))
+    (when-let [j (&lt;! jobs)]
+      (println &quot;worker&quot; id, &quot;processing job&quot; j)
+      (&lt;! (timeout 3000))
+      (&gt;! results (* j 2))
       (recur))))</code></pre>
       </td>
     </tr>
@@ -101,7 +101,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;http://tgk.github.io/2013/10/inspect-core-async-channels.html&lt;/p&gt;
+        <p>http://tgk.github.io/2013/10/inspect-core-async-channels.html</p>
 
       </td>
 
@@ -133,7 +133,7 @@
 
       <td class="code">
         <pre><code class="clojure">(dotimes [j 9]
-  (&amp;gt;!! jobs* j))</code></pre>
+  (&gt;!! jobs* j))</code></pre>
       </td>
     </tr>
   </table>
@@ -157,11 +157,11 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(-&amp;gt;&amp;gt; results*
+        <pre><code class="clojure">(-&gt;&gt; results*
      (async/take 9)
      (async/into [])
-     (&amp;lt;!!)
-     (println &amp;quot;result:&amp;quot; ))</code></pre>
+     (&lt;!!)
+     (println &quot;result:&quot; ))</code></pre>
       </td>
     </tr>
   </table>
@@ -173,16 +173,16 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; worker 0 processing job 0
-&amp;gt;&amp;gt; worker 1 processing job 1
-&amp;gt;&amp;gt; worker 2 processing job 2
-&amp;gt;&amp;gt; worker 0 processing job 3
-&amp;gt;&amp;gt; worker 1 processing job 4
-&amp;gt;&amp;gt; worker 2 processing job 5
-&amp;gt;&amp;gt; worker 0 processing job 6
-&amp;gt;&amp;gt; worker 1 processing job 7
-&amp;gt;&amp;gt; worker 2 processing job 8
-=&amp;gt; nil</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; worker 0 processing job 0
+&gt;&gt; worker 1 processing job 1
+&gt;&gt; worker 2 processing job 2
+&gt;&gt; worker 0 processing job 3
+&gt;&gt; worker 1 processing job 4
+&gt;&gt; worker 2 processing job 5
+&gt;&gt; worker 0 processing job 6
+&gt;&gt; worker 1 processing job 7
+&gt;&gt; worker 2 processing job 8
+=&gt; nil</code></pre>
       </td>
     </tr>
   </table>
@@ -194,7 +194,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; result: [0 2 4 6 8 10 12 14 16]</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; result: [0 2 4 6 8 10 12 14 16]</code></pre>
       </td>
     </tr>
   </table>

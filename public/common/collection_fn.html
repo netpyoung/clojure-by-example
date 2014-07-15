@@ -44,7 +44,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(def strs [&amp;quot;peach&amp;quot;, &amp;quot;apple&amp;quot;, &amp;quot;pear&amp;quot;, &amp;quot;plum&amp;quot;])</code></pre>
+        <pre><code class="clojure">(def strs [&quot;peach&quot;, &quot;apple&quot;, &quot;pear&quot;, &quot;plum&quot;])</code></pre>
       </td>
     </tr>
   </table>
@@ -56,7 +56,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(.indexOf strs &amp;quot;pear&amp;quot;)</code></pre>
+        <pre><code class="clojure">(.indexOf strs &quot;pear&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -68,7 +68,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; 2</code></pre>
+        <pre><code class="clojure">;; =&gt; 2</code></pre>
       </td>
     </tr>
   </table>
@@ -80,7 +80,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(some #{&amp;quot;grape&amp;quot;} strs)</code></pre>
+        <pre><code class="clojure">(some #{&quot;grape&quot;} strs)</code></pre>
       </td>
     </tr>
   </table>
@@ -92,7 +92,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; nil</code></pre>
+        <pre><code class="clojure">;; =&gt; nil</code></pre>
       </td>
     </tr>
   </table>
@@ -104,9 +104,9 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(-&amp;gt;&amp;gt; strs
+        <pre><code class="clojure">(-&gt;&gt; strs
      (some (fn [v]
-             (re-find #&amp;quot;^p\w*&amp;quot; v))))</code></pre>
+             (re-find #&quot;^p\w*&quot; v))))</code></pre>
       </td>
     </tr>
   </table>
@@ -118,7 +118,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;peach&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;peach&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -130,9 +130,9 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(-&amp;gt;&amp;gt; strs
+        <pre><code class="clojure">(-&gt;&gt; strs
      (every? (fn [v]
-               (re-find #&amp;quot;^p\w*&amp;quot; v))))</code></pre>
+               (re-find #&quot;^p\w*&quot; v))))</code></pre>
       </td>
     </tr>
   </table>
@@ -144,7 +144,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; false</code></pre>
+        <pre><code class="clojure">;; =&gt; false</code></pre>
       </td>
     </tr>
   </table>
@@ -156,7 +156,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(-&amp;gt;&amp;gt; strs
+        <pre><code class="clojure">(-&gt;&gt; strs
      (filter (fn [v]
                (some #{\e} v))))</code></pre>
       </td>
@@ -170,7 +170,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; (&amp;quot;peach&amp;quot; &amp;quot;apple&amp;quot; &amp;quot;pear&amp;quot;)</code></pre>
+        <pre><code class="clojure">;; =&gt; (&quot;peach&quot; &quot;apple&quot; &quot;pear&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -194,7 +194,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; (&amp;quot;PEACH&amp;quot; &amp;quot;APPLE&amp;quot; &amp;quot;PEAR&amp;quot; &amp;quot;PLUM&amp;quot;)</code></pre>
+        <pre><code class="clojure">;; =&gt; (&quot;PEACH&quot; &quot;APPLE&quot; &quot;PEAR&quot; &quot;PLUM&quot;)</code></pre>
       </td>
     </tr>
   </table>

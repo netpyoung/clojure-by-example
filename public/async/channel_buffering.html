@@ -44,7 +44,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(require &#39;[clojure.core.async :as async :refer [&amp;lt;! &amp;gt;! &amp;lt;!! timeout chan alt! go]])</code></pre>
+        <pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! timeout chan alt! go]])</code></pre>
       </td>
     </tr>
   </table>
@@ -52,7 +52,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;https://gobyexample.com/channel-buffering&lt;/p&gt;
+        <p>https://gobyexample.com/channel-buffering</p>
 
       </td>
 
@@ -69,8 +69,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(go (&amp;gt;! message &amp;quot;buffered&amp;quot;)
-    (&amp;gt;! message &amp;quot;channel&amp;quot;))</code></pre>
+        <pre><code class="clojure">(go (&gt;! message &quot;buffered&quot;)
+    (&gt;! message &quot;channel&quot;))</code></pre>
       </td>
     </tr>
   </table>
@@ -82,7 +82,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(println (&amp;lt;!! message))</code></pre>
+        <pre><code class="clojure">(println (&lt;!! message))</code></pre>
       </td>
     </tr>
   </table>
@@ -94,8 +94,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; buffered
-=&amp;gt; nil</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; buffered
+=&gt; nil</code></pre>
       </td>
     </tr>
   </table>
@@ -107,7 +107,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(println (&amp;lt;!! message))</code></pre>
+        <pre><code class="clojure">(println (&lt;!! message))</code></pre>
       </td>
     </tr>
   </table>
@@ -119,8 +119,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; channel
-=&amp;gt; nil</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; channel
+=&gt; nil</code></pre>
       </td>
     </tr>
   </table>

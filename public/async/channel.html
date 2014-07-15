@@ -44,7 +44,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(require &#39;[clojure.core.async :as async :refer [&amp;lt;! &amp;gt;! &amp;lt;!! timeout chan alt! go]])</code></pre>
+        <pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! timeout chan alt! go]])</code></pre>
       </td>
     </tr>
   </table>
@@ -68,8 +68,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(go (&amp;gt;! message &amp;quot;ping&amp;quot;))
-(go (println (&amp;lt;! message)))</code></pre>
+        <pre><code class="clojure">(go (&gt;! message &quot;ping&quot;))
+(go (println (&lt;! message)))</code></pre>
       </td>
     </tr>
   </table>
@@ -81,8 +81,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; ping
-=&amp;gt; #&amp;lt;ManyToManyChannel clojure.core.async.impl.channels.ManyToManyChannel@369c1699&amp;gt;</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; ping
+=&gt; #&lt;ManyToManyChannel clojure.core.async.impl.channels.ManyToManyChannel@369c1699&gt;</code></pre>
       </td>
     </tr>
   </table>
@@ -94,8 +94,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(go (&amp;gt;! message &amp;quot;ping&amp;quot;))
-(println (&amp;lt;!! message))</code></pre>
+        <pre><code class="clojure">(go (&gt;! message &quot;ping&quot;))
+(println (&lt;!! message))</code></pre>
       </td>
     </tr>
   </table>
@@ -107,8 +107,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; ping
-=&amp;gt; nil</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; ping
+=&gt; nil</code></pre>
       </td>
     </tr>
   </table>

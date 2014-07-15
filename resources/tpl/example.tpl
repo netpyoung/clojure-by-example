@@ -19,11 +19,11 @@
   <table>
     <tr>
       <td class="docs">
-        {{doctable.docs}}
+        {{doctable.docs|safe}}
       </td>
 
       <td class="code">
-        <pre><code class="clojure">{{doctable.code}}</code></pre>
+        <pre><code class="clojure">{{doctable.code|safe}}</code></pre>
       </td>
     </tr>
   </table>

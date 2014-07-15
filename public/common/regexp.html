@@ -40,7 +40,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;https://github.com/clojure-cookbook/clojure-cookbook/blob/master/01_primitive-data/1-08_matching-strings.asciidoc&lt;/p&gt;
+        <p>https://github.com/clojure-cookbook/clojure-cookbook/blob/master/01_primitive-data/1-08_matching-strings.asciidoc</p>
 
       </td>
 
@@ -57,7 +57,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(re-find #&amp;quot;p([a-z]+)ch&amp;quot;, &amp;quot;peach&amp;quot;)</code></pre>
+        <pre><code class="clojure">(re-find #&quot;p([a-z]+)ch&quot;, &quot;peach&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -69,7 +69,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; [&amp;quot;peach&amp;quot; &amp;quot;ea&amp;quot;]</code></pre>
+        <pre><code class="clojure">;; =&gt; [&quot;peach&quot; &quot;ea&quot;]</code></pre>
       </td>
     </tr>
   </table>
@@ -77,9 +77,9 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;// This tests whether a pattern matches a string.
-&lt;br  /&gt;match, _ := regexp.MatchString(&amp;ldquo;p([a-z]+)ch&amp;rdquo;, &amp;ldquo;peach&amp;rdquo;)
-&lt;br  /&gt;fmt.Println(match)&lt;/p&gt;
+        <p>// This tests whether a pattern matches a string.
+<br  />match, _ := regexp.MatchString(&ldquo;p([a-z]+)ch&rdquo;, &ldquo;peach&rdquo;)
+<br  />fmt.Println(match)</p>
 
       </td>
 
@@ -92,9 +92,9 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;// Above we used a string pattern directly, but for
-&lt;br  /&gt;// other regexp tasks you&#39;ll need to &lt;code&gt;Compile&lt;/code&gt; an
-&lt;br  /&gt;// optimized &lt;code&gt;Regexp&lt;/code&gt; struct.&lt;/p&gt;
+        <p>// Above we used a string pattern directly, but for
+<br  />// other regexp tasks you'll need to <code>Compile</code> an
+<br  />// optimized <code>Regexp</code> struct.</p>
 
       </td>
 
@@ -111,8 +111,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(def r (re-pattern &amp;quot;p([a-z]+)ch&amp;quot;))
-(re-find r &amp;quot;peach&amp;quot;)</code></pre>
+        <pre><code class="clojure">(def r (re-pattern &quot;p([a-z]+)ch&quot;))
+(re-find r &quot;peach&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -124,7 +124,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; [&amp;quot;peach&amp;quot; &amp;quot;ea&amp;quot;]</code></pre>
+        <pre><code class="clojure">;; =&gt; [&quot;peach&quot; &quot;ea&quot;]</code></pre>
       </td>
     </tr>
   </table>
@@ -136,8 +136,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(require &#39;[clojure.string :as s])
-(re-seq r &amp;quot;peach punch&amp;quot;)</code></pre>
+        <pre><code class="clojure">(require '[clojure.string :as s])
+(re-seq r &quot;peach punch&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -149,7 +149,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; ([&amp;quot;peach&amp;quot; &amp;quot;ea&amp;quot;] [&amp;quot;punch&amp;quot; &amp;quot;un&amp;quot;])</code></pre>
+        <pre><code class="clojure">;; =&gt; ([&quot;peach&quot; &quot;ea&quot;] [&quot;punch&quot; &quot;un&quot;])</code></pre>
       </td>
     </tr>
   </table>
@@ -157,10 +157,10 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;// The also finds the first match but returns the
-&lt;br  /&gt;// start and end indexes for the match instead of the
-&lt;br  /&gt;// matching text.
-&lt;br  /&gt;fmt.Println(r.FindStringIndex(&amp;ldquo;peach punch&amp;rdquo;))&lt;/p&gt;
+        <p>// The also finds the first match but returns the
+<br  />// start and end indexes for the match instead of the
+<br  />// matching text.
+<br  />fmt.Println(r.FindStringIndex(&ldquo;peach punch&rdquo;))</p>
 
       </td>
 
@@ -173,11 +173,11 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;// The &lt;code&gt;Submatch&lt;/code&gt; variants include information about
-&lt;br  /&gt;// both the whole-pattern matches and the submatches
-&lt;br  /&gt;// within those matches. For example this will return
-&lt;br  /&gt;// information for both &lt;code&gt;p([a-z]+)ch&lt;/code&gt; and &lt;code&gt;([a-z]+)&lt;/code&gt;.
-&lt;br  /&gt;fmt.Println(r.FindStringSubmatch(&amp;ldquo;peach punch&amp;rdquo;))&lt;/p&gt;
+        <p>// The <code>Submatch</code> variants include information about
+<br  />// both the whole-pattern matches and the submatches
+<br  />// within those matches. For example this will return
+<br  />// information for both <code>p([a-z]+)ch</code> and <code>([a-z]+)</code>.
+<br  />fmt.Println(r.FindStringSubmatch(&ldquo;peach punch&rdquo;))</p>
 
       </td>
 
@@ -190,9 +190,9 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;// Similarly this will return information about the
-&lt;br  /&gt;// indexes of matches and submatches.
-&lt;br  /&gt;fmt.Println(r.FindStringSubmatchIndex(&amp;ldquo;peach punch&amp;rdquo;))&lt;/p&gt;
+        <p>// Similarly this will return information about the
+<br  />// indexes of matches and submatches.
+<br  />fmt.Println(r.FindStringSubmatchIndex(&ldquo;peach punch&rdquo;))</p>
 
       </td>
 
@@ -205,10 +205,10 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;// The &lt;code&gt;All&lt;/code&gt; variants of these functions apply to all
-&lt;br  /&gt;// matches in the input, not just the first. For
-&lt;br  /&gt;// example to find all matches for a regexp.
-&lt;br  /&gt;fmt.Println(r.FindAllString(&amp;ldquo;peach punch pinch&amp;rdquo;, -1))&lt;/p&gt;
+        <p>// The <code>All</code> variants of these functions apply to all
+<br  />// matches in the input, not just the first. For
+<br  />// example to find all matches for a regexp.
+<br  />fmt.Println(r.FindAllString(&ldquo;peach punch pinch&rdquo;, -1))</p>
 
       </td>
 
@@ -221,11 +221,11 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;// These &lt;code&gt;All&lt;/code&gt; variants are available for the other
-&lt;br  /&gt;// functions we saw above as well.
-&lt;br  /&gt;fmt.Println(r.FindAllStringSubmatchIndex(&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;   &quot;peach punch pinch&quot;, -1))
-&lt;/code&gt;&lt;/pre&gt;
+        <p>// These <code>All</code> variants are available for the other
+<br  />// functions we saw above as well.
+<br  />fmt.Println(r.FindAllStringSubmatchIndex(</p>
+<pre><code>   "peach punch pinch", -1))
+</code></pre>
 
       </td>
 
@@ -238,10 +238,10 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;// Providing a non-negative integer as the second
-&lt;br  /&gt;// argument to these functions will limit the number
-&lt;br  /&gt;// of matches.
-&lt;br  /&gt;fmt.Println(r.FindAllString(&amp;ldquo;peach punch pinch&amp;rdquo;, 2))&lt;/p&gt;
+        <p>// Providing a non-negative integer as the second
+<br  />// argument to these functions will limit the number
+<br  />// of matches.
+<br  />fmt.Println(r.FindAllString(&ldquo;peach punch pinch&rdquo;, 2))</p>
 
       </td>
 
@@ -254,11 +254,11 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;// Our examples above had string arguments and used
-&lt;br  /&gt;// names like &lt;code&gt;MatchString&lt;/code&gt;. We can also provide
-&lt;br  /&gt;// &lt;code&gt;[]byte&lt;/code&gt; arguments and drop &lt;code&gt;String&lt;/code&gt; from the
-&lt;br  /&gt;// function name.
-&lt;br  /&gt;fmt.Println(r.Match([]byte(&amp;ldquo;peach&amp;rdquo;)))&lt;/p&gt;
+        <p>// Our examples above had string arguments and used
+<br  />// names like <code>MatchString</code>. We can also provide
+<br  />// <code>[]byte</code> arguments and drop <code>String</code> from the
+<br  />// function name.
+<br  />fmt.Println(r.Match([]byte(&ldquo;peach&rdquo;)))</p>
 
       </td>
 
@@ -271,12 +271,12 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;// When creating constants with regular expressions
-&lt;br  /&gt;// you can use the &lt;code&gt;MustCompile&lt;/code&gt; variation of
-&lt;br  /&gt;// &lt;code&gt;Compile&lt;/code&gt;. A plain &lt;code&gt;Compile&lt;/code&gt; won&#39;t work for
-&lt;br  /&gt;// constants because it has 2 return values.
-&lt;br  /&gt;r = regexp.MustCompile(&amp;ldquo;p([a-z]+)ch&amp;rdquo;)
-&lt;br  /&gt;fmt.Println(r)&lt;/p&gt;
+        <p>// When creating constants with regular expressions
+<br  />// you can use the <code>MustCompile</code> variation of
+<br  />// <code>Compile</code>. A plain <code>Compile</code> won't work for
+<br  />// constants because it has 2 return values.
+<br  />r = regexp.MustCompile(&ldquo;p([a-z]+)ch&rdquo;)
+<br  />fmt.Println(r)</p>
 
       </td>
 
@@ -289,9 +289,9 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;// The &lt;code&gt;regexp&lt;/code&gt; package can also be used to replace
-&lt;br  /&gt;// subsets of strings with other values.
-&lt;br  /&gt;fmt.Println(r.ReplaceAllString(&amp;ldquo;a peach&amp;rdquo;, &amp;ldquo;&lt;fruit&gt;&amp;ldquo;))&lt;/p&gt;
+        <p>// The <code>regexp</code> package can also be used to replace
+<br  />// subsets of strings with other values.
+<br  />fmt.Println(r.ReplaceAllString(&ldquo;a peach&rdquo;, &ldquo;<fruit>&ldquo;))</p>
 
       </td>
 
@@ -304,11 +304,11 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;// The &lt;code&gt;Func&lt;/code&gt; variant allows you to transform matched
-&lt;br  /&gt;// text with a given function.
-&lt;br  /&gt;in := []byte(&amp;ldquo;a peach&amp;rdquo;)
-&lt;br  /&gt;out := r.ReplaceAllFunc(in, bytes.ToUpper)
-&lt;br  /&gt;fmt.Println(string(out))&lt;/p&gt;
+        <p>// The <code>Func</code> variant allows you to transform matched
+<br  />// text with a given function.
+<br  />in := []byte(&ldquo;a peach&rdquo;)
+<br  />out := r.ReplaceAllFunc(in, bytes.ToUpper)
+<br  />fmt.Println(string(out))</p>
 
       </td>
 

@@ -44,7 +44,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(require &#39;[clojure.string :as s])</code></pre>
+        <pre><code class="clojure">(require '[clojure.string :as s])</code></pre>
       </td>
     </tr>
   </table>
@@ -56,7 +56,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(some #{\e \s} &amp;quot;test&amp;quot;)</code></pre>
+        <pre><code class="clojure">(some #{\e \s} &quot;test&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -68,7 +68,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; \e</code></pre>
+        <pre><code class="clojure">;; =&gt; \e</code></pre>
       </td>
     </tr>
   </table>
@@ -80,7 +80,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(count (filter #{\t} &amp;quot;test&amp;quot;))</code></pre>
+        <pre><code class="clojure">(count (filter #{\t} &quot;test&quot;))</code></pre>
       </td>
     </tr>
   </table>
@@ -92,7 +92,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; 2</code></pre>
+        <pre><code class="clojure">;; =&gt; 2</code></pre>
       </td>
     </tr>
   </table>
@@ -104,7 +104,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(re-find #&amp;quot;^te\w*&amp;quot; &amp;quot;test&amp;quot;)</code></pre>
+        <pre><code class="clojure">(re-find #&quot;^te\w*&quot; &quot;test&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -116,7 +116,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;test&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;test&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -128,7 +128,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(re-find #&amp;quot;\w*st$&amp;quot; &amp;quot;testx&amp;quot;)</code></pre>
+        <pre><code class="clojure">(re-find #&quot;\w*st$&quot; &quot;testx&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -140,7 +140,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;test&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;test&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -152,7 +152,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(.indexOf (seq &amp;quot;test&amp;quot;) \e)</code></pre>
+        <pre><code class="clojure">(.indexOf (seq &quot;test&quot;) \e)</code></pre>
       </td>
     </tr>
   </table>
@@ -164,7 +164,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; 1</code></pre>
+        <pre><code class="clojure">;; =&gt; 1</code></pre>
       </td>
     </tr>
   </table>
@@ -176,8 +176,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(-&amp;gt;&amp;gt; [&amp;quot;a&amp;quot; &amp;quot;b&amp;quot;]
-     (interpose &amp;quot;-&amp;quot;)
+        <pre><code class="clojure">(-&gt;&gt; [&quot;a&quot; &quot;b&quot;]
+     (interpose &quot;-&quot;)
      (apply str))</code></pre>
       </td>
     </tr>
@@ -190,7 +190,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;a-b&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;a-b&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -202,7 +202,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(repeat 5 &amp;quot;a&amp;quot;)</code></pre>
+        <pre><code class="clojure">(repeat 5 &quot;a&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -214,7 +214,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; (&amp;quot;a&amp;quot; &amp;quot;a&amp;quot; &amp;quot;a&amp;quot; &amp;quot;a&amp;quot; &amp;quot;a&amp;quot;)</code></pre>
+        <pre><code class="clojure">;; =&gt; (&quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -226,7 +226,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(s/replace &amp;quot;foo&amp;quot; &amp;quot;o&amp;quot; &amp;quot;0&amp;quot;)</code></pre>
+        <pre><code class="clojure">(s/replace &quot;foo&quot; &quot;o&quot; &quot;0&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -238,7 +238,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;f00&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;f00&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -250,7 +250,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(s/replace-first &amp;quot;foo&amp;quot; &amp;quot;o&amp;quot; &amp;quot;0&amp;quot;)</code></pre>
+        <pre><code class="clojure">(s/replace-first &quot;foo&quot; &quot;o&quot; &quot;0&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -262,7 +262,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;f0o&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;f0o&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -274,7 +274,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(s/split &amp;quot;a-b-c-d-e&amp;quot; #&amp;quot;-&amp;quot;)</code></pre>
+        <pre><code class="clojure">(s/split &quot;a-b-c-d-e&quot; #&quot;-&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -286,7 +286,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; [&amp;quot;a&amp;quot; &amp;quot;b&amp;quot; &amp;quot;c&amp;quot; &amp;quot;d&amp;quot; &amp;quot;e&amp;quot;]</code></pre>
+        <pre><code class="clojure">;; =&gt; [&quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot;]</code></pre>
       </td>
     </tr>
   </table>
@@ -298,7 +298,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(s/lower-case &amp;quot;TEST&amp;quot;)</code></pre>
+        <pre><code class="clojure">(s/lower-case &quot;TEST&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -310,7 +310,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;test&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;test&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -322,7 +322,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(s/upper-case &amp;quot;test&amp;quot;)</code></pre>
+        <pre><code class="clojure">(s/upper-case &quot;test&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -334,7 +334,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;TEST&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;TEST&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -346,7 +346,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(count &amp;quot;hello&amp;quot;)</code></pre>
+        <pre><code class="clojure">(count &quot;hello&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -358,7 +358,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; 5</code></pre>
+        <pre><code class="clojure">;; =&gt; 5</code></pre>
       </td>
     </tr>
   </table>
@@ -370,7 +370,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(nth &amp;quot;hello&amp;quot; 1)</code></pre>
+        <pre><code class="clojure">(nth &quot;hello&quot; 1)</code></pre>
       </td>
     </tr>
   </table>
@@ -382,7 +382,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; \e</code></pre>
+        <pre><code class="clojure">;; =&gt; \e</code></pre>
       </td>
     </tr>
   </table>
@@ -394,7 +394,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(get &amp;quot;hello&amp;quot; 1)</code></pre>
+        <pre><code class="clojure">(get &quot;hello&quot; 1)</code></pre>
       </td>
     </tr>
   </table>
@@ -406,7 +406,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; \e</code></pre>
+        <pre><code class="clojure">;; =&gt; \e</code></pre>
       </td>
     </tr>
   </table>

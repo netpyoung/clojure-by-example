@@ -44,7 +44,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(require &#39;[clojure.core.async :as async :refer [&amp;lt;! &amp;gt;! &amp;lt;!! timeout chan alt! go put!]])</code></pre>
+        <pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! timeout chan alt! go put!]])</code></pre>
       </td>
     </tr>
   </table>
@@ -52,7 +52,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;https://gobyexample.com/channel-synchronization&lt;/p&gt;
+        <p>https://gobyexample.com/channel-synchronization</p>
 
       </td>
 
@@ -70,9 +70,9 @@
 
       <td class="code">
         <pre><code class="clojure">(defn worker [done-chan]
-  (println &amp;quot;working...&amp;quot;)
+  (println &quot;working...&quot;)
   (timeout 1000)
-  (println &amp;quot;done&amp;quot;)
+  (println &quot;done&quot;)
   (put! done-chan true))</code></pre>
       </td>
     </tr>
@@ -98,9 +98,9 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; #&amp;lt;ManyToManyChannel clojure.core.async.impl.channels.ManyToManyChannel@5be88c45&amp;gt;
-&amp;gt;&amp;gt; working...
-&amp;gt;&amp;gt; done</code></pre>
+        <pre><code class="clojure">;; =&gt; #&lt;ManyToManyChannel clojure.core.async.impl.channels.ManyToManyChannel@5be88c45&gt;
+&gt;&gt; working...
+&gt;&gt; done</code></pre>
       </td>
     </tr>
   </table>
@@ -112,7 +112,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(println (&amp;lt;!! done))</code></pre>
+        <pre><code class="clojure">(println (&lt;!! done))</code></pre>
       </td>
     </tr>
   </table>
@@ -124,8 +124,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; true
-=&amp;gt; nil</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; true
+=&gt; nil</code></pre>
       </td>
     </tr>
   </table>

@@ -40,7 +40,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;https://gobyexample.com/base64-encoding&lt;/p&gt;
+        <p>https://gobyexample.com/base64-encoding</p>
 
       </td>
 
@@ -53,7 +53,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;https://github.com/clojure/data.codec&lt;/p&gt;
+        <p>https://github.com/clojure/data.codec</p>
 
       </td>
 
@@ -70,7 +70,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(require &#39;[clojure.data.codec.base64 :as b64])</code></pre>
+        <pre><code class="clojure">(require '[clojure.data.codec.base64 :as b64])</code></pre>
       </td>
     </tr>
   </table>
@@ -82,7 +82,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(-&amp;gt;&amp;gt; &amp;quot;abc123!?$*&amp;amp;()&#39;-=@~&amp;quot;
+        <pre><code class="clojure">(-&gt;&gt; &quot;abc123!?$*&amp;()'-=@~&quot;
      (map byte)
      (byte-array)
      (b64/encode)
@@ -98,7 +98,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;YWJjMTIzIT8kKiYoKSctPUB+&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;YWJjMTIzIT8kKiYoKSctPUB+&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -110,7 +110,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(-&amp;gt;&amp;gt; &amp;quot;YWJjMTIzIT8kKiYoKSctPUB+&amp;quot;
+        <pre><code class="clojure">(-&gt;&gt; &quot;YWJjMTIzIT8kKiYoKSctPUB+&quot;
      (map byte)
      (byte-array)
      (b64/decode)
@@ -126,7 +126,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;abc123!?$*&amp;amp;()&#39;-=@~&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;abc123!?$*&amp;()'-=@~&quot;</code></pre>
       </td>
     </tr>
   </table>

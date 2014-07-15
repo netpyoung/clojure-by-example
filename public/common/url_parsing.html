@@ -40,8 +40,8 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;https://gobyexample.com/url-parsing
-&lt;br  /&gt;https://github.com/wtetzner/exploding-fish&lt;/p&gt;
+        <p>https://gobyexample.com/url-parsing
+<br  />https://github.com/wtetzner/exploding-fish</p>
 
       </td>
 
@@ -54,7 +54,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;http://docs.oracle.com/javase/7/docs/api/java/net/URI.html&lt;/p&gt;
+        <p>http://docs.oracle.com/javase/7/docs/api/java/net/URI.html</p>
 
       </td>
 
@@ -67,7 +67,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;http://en.wikipedia.org/wiki/URI_scheme&lt;/p&gt;
+        <p>http://en.wikipedia.org/wiki/URI_scheme</p>
 
       </td>
 
@@ -80,12 +80,12 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;https://github.com/cemerick/url&lt;/p&gt;
+        <p>https://github.com/cemerick/url</p>
 
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(require &#39;[cemerick.url :as url])</code></pre>
+        <pre><code class="clojure">(require '[cemerick.url :as url])</code></pre>
       </td>
     </tr>
   </table>
@@ -97,7 +97,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(require &#39;[org.bovinegenius [exploding-fish :as uri]])</code></pre>
+        <pre><code class="clojure">(require '[org.bovinegenius [exploding-fish :as uri]])</code></pre>
       </td>
     </tr>
   </table>
@@ -109,7 +109,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(def s &amp;quot;postgres://user:pass@host.com:5432/path?k=v#f&amp;quot;)
+        <pre><code class="clojure">(def s &quot;postgres://user:pass@host.com:5432/path?k=v#f&quot;)
 (def u (uri/uri s))</code></pre>
       </td>
     </tr>
@@ -134,7 +134,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;postgres&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;postgres&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -158,7 +158,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;user:pass&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;user:pass&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -182,7 +182,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;host.com&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;host.com&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -206,7 +206,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; 5432</code></pre>
+        <pre><code class="clojure">;; =&gt; 5432</code></pre>
       </td>
     </tr>
   </table>
@@ -230,7 +230,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;/path&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;/path&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -254,7 +254,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;f&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;f&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -278,7 +278,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;k=v&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;k=v&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -290,8 +290,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(-&amp;gt;&amp;gt; &amp;quot;k&amp;quot;
-     (get (-&amp;gt;&amp;gt; (uri/query-pairs u)
+        <pre><code class="clojure">(-&gt;&gt; &quot;k&quot;
+     (get (-&gt;&gt; (uri/query-pairs u)
                (into {}))))</code></pre>
       </td>
     </tr>
@@ -304,7 +304,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;v&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;v&quot;</code></pre>
       </td>
     </tr>
   </table>

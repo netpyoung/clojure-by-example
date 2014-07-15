@@ -44,7 +44,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(require &#39;[clojure.core.async :as async :refer [&amp;lt;! &amp;gt;! &amp;lt;!! timeout chan alt! go go-loop put! close! alts! alts!!]])</code></pre>
+        <pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! timeout chan alt! go go-loop put! close! alts! alts!!]])</code></pre>
       </td>
     </tr>
   </table>
@@ -75,11 +75,11 @@
   ITicker
   (start! [this]
     (go-loop []
-      (&amp;lt;! (timeout msec))
-      (when (&amp;gt;! c (System/currentTimeMillis))
+      (&lt;! (timeout msec))
+      (when (&gt;! c (System/currentTimeMillis))
         (recur))))
   (tick! [this]
-    (&amp;lt;!! c))
+    (&lt;!! c))
   (stop! [this]
     (close! c)))</code></pre>
       </td>
@@ -114,8 +114,8 @@
     (when-let [msec (tick! t)]
       (println msec)
       (recur)))
-  (&amp;lt;!! (timeout 2600))
-  (println &amp;quot;time over&amp;quot;)
+  (&lt;!! (timeout 2600))
+  (println &quot;time over&quot;)
 
   (stop! t))</code></pre>
       </td>
@@ -129,13 +129,13 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; 1398643673495
-&amp;gt;&amp;gt; 1398643673996
-&amp;gt;&amp;gt; 1398643674496
-&amp;gt;&amp;gt; 1398643674997
-&amp;gt;&amp;gt; 1398643675498
-&amp;gt;&amp;gt; time over
-=&amp;gt; nil</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; 1398643673495
+&gt;&gt; 1398643673996
+&gt;&gt; 1398643674496
+&gt;&gt; 1398643674997
+&gt;&gt; 1398643675498
+&gt;&gt; time over
+=&gt; nil</code></pre>
       </td>
     </tr>
   </table>
@@ -147,7 +147,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(defmacro with-ticker [[name new] &amp;amp; body]
+        <pre><code class="clojure">(defmacro with-ticker [[name new] &amp; body]
   `(let [~name ~new]
      (start! ~name)
      (do ~@body)
@@ -168,8 +168,8 @@
     (when-let [msec (tick! a)]
       (println msec)
       (recur)))
-  (&amp;lt;!! (timeout 2600))
-  (println &amp;quot;time over&amp;quot;))</code></pre>
+  (&lt;!! (timeout 2600))
+  (println &quot;time over&quot;))</code></pre>
       </td>
     </tr>
   </table>
@@ -181,13 +181,13 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; 1398643706297
-&amp;gt;&amp;gt; 1398643706797
-&amp;gt;&amp;gt; 1398643707298
-&amp;gt;&amp;gt; 1398643707798
-&amp;gt;&amp;gt; 1398643708299
-&amp;gt;&amp;gt; time over
-=&amp;gt; nil</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; 1398643706297
+&gt;&gt; 1398643706797
+&gt;&gt; 1398643707298
+&gt;&gt; 1398643707798
+&gt;&gt; 1398643708299
+&gt;&gt; time over
+=&gt; nil</code></pre>
       </td>
     </tr>
   </table>

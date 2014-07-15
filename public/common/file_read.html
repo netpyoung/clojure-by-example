@@ -40,9 +40,9 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;https://gobyexample.com/reading-files
-&lt;br  /&gt;https://gobyexample.com/writing-files
-&lt;br  /&gt;https://gobyexample.com/line-filters&lt;/p&gt;
+        <p>https://gobyexample.com/reading-files
+<br  />https://gobyexample.com/writing-files
+<br  />https://gobyexample.com/line-filters</p>
 
       </td>
 
@@ -55,7 +55,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;http://stackoverflow.com/questions/7756909/in-clojure-1-3-how-to-read-and-write-a-file&lt;/p&gt;
+        <p>http://stackoverflow.com/questions/7756909/in-clojure-1-3-how-to-read-and-write-a-file</p>
 
       </td>
 
@@ -68,7 +68,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;http://copperthoughts.com/p/clojure-io-p1/&lt;/p&gt;
+        <p>http://copperthoughts.com/p/clojure-io-p1/</p>
 
       </td>
 
@@ -85,7 +85,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(slurp &amp;quot;resources/test.txt&amp;quot;)</code></pre>
+        <pre><code class="clojure">(slurp &quot;resources/test.txt&quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -97,7 +97,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; =&amp;gt; &amp;quot;hello\nclojure\n&amp;quot;</code></pre>
+        <pre><code class="clojure">;; =&gt; &quot;hello\nclojure\n&quot;</code></pre>
       </td>
     </tr>
   </table>
@@ -109,8 +109,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(use &#39;clojure.java.io)
-(with-open [rdr (reader &amp;quot;resources/test.txt&amp;quot;)]
+        <pre><code class="clojure">(use 'clojure.java.io)
+(with-open [rdr (reader &quot;resources/test.txt&quot;)]
   (doseq [line (line-seq rdr)]
     (println line)))</code></pre>
       </td>
@@ -124,9 +124,9 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; hello
-&amp;gt;&amp;gt; clojure
-=&amp;gt; nil</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; hello
+&gt;&gt; clojure
+=&gt; nil</code></pre>
       </td>
     </tr>
   </table>

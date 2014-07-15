@@ -44,7 +44,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(require &#39;[clojure.core.async :as async :refer [&amp;lt;! &amp;gt;! &amp;lt;!! &amp;gt;!! timeout chan alt! go go-loop put! pipe]])</code></pre>
+        <pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! &gt;!! timeout chan alt! go go-loop put! pipe]])</code></pre>
       </td>
     </tr>
   </table>
@@ -70,7 +70,7 @@
 
       <td class="code">
         <pre><code class="clojure">(defn pong [pings pongs]
-  (-&amp;gt;&amp;gt; (&amp;lt;!! pings)
+  (-&gt;&gt; (&lt;!! pings)
        (put! pongs)))</code></pre>
       </td>
     </tr>
@@ -96,7 +96,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(ping pi &amp;quot;passed message&amp;quot;)
+        <pre><code class="clojure">(ping pi &quot;passed message&quot;)
 (pong pi po)</code></pre>
       </td>
     </tr>
@@ -109,7 +109,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(println (&amp;lt;!! po))</code></pre>
+        <pre><code class="clojure">(println (&lt;!! po))</code></pre>
       </td>
     </tr>
   </table>
@@ -121,100 +121,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; passed message
-=&amp;gt; nil</code></pre>
-      </td>
-    </tr>
-  </table>
-  
-  <table>
-    <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure"></code></pre>
-      </td>
-    </tr>
-  </table>
-  
-  <table>
-    <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(defn ping&#39; [pings msg]
-  (go
-    (&amp;gt;! pings msg)))</code></pre>
-      </td>
-    </tr>
-  </table>
-  
-  <table>
-    <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(defn pong&#39; [pings pongs]
-  (go
-    (-&amp;gt;&amp;gt; (&amp;lt;! pings)
-         (&amp;gt;! pongs))))</code></pre>
-      </td>
-    </tr>
-  </table>
-  
-  <table>
-    <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(def pi&#39; (chan 1))
-(def po&#39; (chan 1))</code></pre>
-      </td>
-    </tr>
-  </table>
-  
-  <table>
-    <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(ping pi&#39; &amp;quot;passed message&amp;quot;)
-(pong pi&#39; po&#39;)</code></pre>
-      </td>
-    </tr>
-  </table>
-  
-  <table>
-    <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">(println (&amp;lt;!! po&#39;))</code></pre>
-      </td>
-    </tr>
-  </table>
-  
-  <table>
-    <tr>
-      <td class="docs">
-        
-      </td>
-
-      <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; passed message
-=&amp;gt; nil</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; passed message
+=&gt; nil</code></pre>
       </td>
     </tr>
   </table>
@@ -238,8 +146,9 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(def pi&#39;&#39; (chan 1))
-(def po&#39;&#39; (chan 1))</code></pre>
+        <pre><code class="clojure">(defn ping' [pings msg]
+  (go
+    (&gt;! pings msg)))</code></pre>
       </td>
     </tr>
   </table>
@@ -251,7 +160,10 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(pipe pi&#39;&#39; po&#39;&#39;)</code></pre>
+        <pre><code class="clojure">(defn pong' [pings pongs]
+  (go
+    (-&gt;&gt; (&lt;! pings)
+         (&gt;! pongs))))</code></pre>
       </td>
     </tr>
   </table>
@@ -263,8 +175,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(put! pi&#39;&#39; &amp;quot;passed message&amp;quot;)
-(println (&amp;lt;!! po&#39;&#39;))</code></pre>
+        <pre><code class="clojure">(def pi' (chan 1))
+(def po' (chan 1))</code></pre>
       </td>
     </tr>
   </table>
@@ -276,8 +188,96 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; passed message
-=&amp;gt; nil</code></pre>
+        <pre><code class="clojure">(ping pi' &quot;passed message&quot;)
+(pong pi' po')</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(println (&lt;!! po'))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &gt;&gt; passed message
+=&gt; nil</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure"></code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(def pi'' (chan 1))
+(def po'' (chan 1))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(pipe pi'' po'')</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(put! pi'' &quot;passed message&quot;)
+(println (&lt;!! po''))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &gt;&gt; passed message
+=&gt; nil</code></pre>
       </td>
     </tr>
   </table>

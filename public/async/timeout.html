@@ -40,7 +40,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;https://gobyexample.com/timeouts&lt;/p&gt;
+        <p>https://gobyexample.com/timeouts</p>
 
       </td>
 
@@ -57,7 +57,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(require &#39;[clojure.core.async :as async :refer [&amp;lt;! &amp;gt;! &amp;lt;!! timeout chan alt! go go-loop put! alts! alts!!]])</code></pre>
+        <pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! timeout chan alt! go go-loop put! alts! alts!!]])</code></pre>
       </td>
     </tr>
   </table>
@@ -81,8 +81,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(go (&amp;lt;! (timeout (* 2 1000)))
-    (&amp;gt;! c1 &amp;quot;result 1&amp;quot;))</code></pre>
+        <pre><code class="clojure">(go (&lt;! (timeout (* 2 1000)))
+    (&gt;! c1 &quot;result 1&quot;))</code></pre>
       </td>
     </tr>
   </table>
@@ -97,7 +97,7 @@
         <pre><code class="clojure">(let [[v ch] (alts!! [c1 (timeout 1000)])]
   (if v
     (println v)
-    (println &amp;quot;timeout 1&amp;quot;)))</code></pre>
+    (println &quot;timeout 1&quot;)))</code></pre>
       </td>
     </tr>
   </table>
@@ -109,7 +109,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; timeout 1</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; timeout 1</code></pre>
       </td>
     </tr>
   </table>
@@ -133,8 +133,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(go (&amp;lt;! (timeout (* 2 1000)))
-    (&amp;gt;! c2 &amp;quot;result 2&amp;quot;))</code></pre>
+        <pre><code class="clojure">(go (&lt;! (timeout (* 2 1000)))
+    (&gt;! c2 &quot;result 2&quot;))</code></pre>
       </td>
     </tr>
   </table>
@@ -149,7 +149,7 @@
         <pre><code class="clojure">(let [[v ch] (alts!! [c2 (timeout 3000)])]
   (if v
     (println v)
-    (println &amp;quot;timeout 2&amp;quot;)))</code></pre>
+    (println &quot;timeout 2&quot;)))</code></pre>
       </td>
     </tr>
   </table>
@@ -161,7 +161,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; result 2</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; result 2</code></pre>
       </td>
     </tr>
   </table>

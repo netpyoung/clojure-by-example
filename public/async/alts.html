@@ -40,7 +40,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;https://gobyexample.com/select&lt;/p&gt;
+        <p>https://gobyexample.com/select</p>
 
       </td>
 
@@ -57,7 +57,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(require &#39;[clojure.core.async :as async :refer [&amp;lt;! &amp;gt;! &amp;lt;!! timeout chan alt! go go-loop put! alts! alts!!]])</code></pre>
+        <pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! timeout chan alt! go go-loop put! alts! alts!!]])</code></pre>
       </td>
     </tr>
   </table>
@@ -82,8 +82,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(go (&amp;lt;! (timeout 1000))
-    (&amp;gt;! c1 &amp;quot;one&amp;quot;))</code></pre>
+        <pre><code class="clojure">(go (&lt;! (timeout 1000))
+    (&gt;! c1 &quot;one&quot;))</code></pre>
       </td>
     </tr>
   </table>
@@ -95,8 +95,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(go (&amp;lt;! (timeout (* 2 1000)))
-    (&amp;gt;! c2 &amp;quot;two&amp;quot;))</code></pre>
+        <pre><code class="clojure">(go (&lt;! (timeout (* 2 1000)))
+    (&gt;! c2 &quot;two&quot;))</code></pre>
       </td>
     </tr>
   </table>
@@ -111,8 +111,8 @@
         <pre><code class="clojure">(dotimes [i 2]
   (let [[v ch] (alts!! [c1 c2])]
     (condp = ch
-      c1 (println &amp;quot;received&amp;quot; v)
-      c2 (println &amp;quot;received&amp;quot; v)
+      c1 (println &quot;received&quot; v)
+      c2 (println &quot;received&quot; v)
       nil)))</code></pre>
       </td>
     </tr>

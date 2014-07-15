@@ -40,7 +40,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;switch.clj&lt;/p&gt;
+        <p>switch.clj</p>
 
       </td>
 
@@ -58,8 +58,8 @@
 
       <td class="code">
         <pre><code class="clojure">(if (= (rem 7 2) 0)
-  (println &amp;quot;7 is even&amp;quot;)
-  (println &amp;quot;7 is odd&amp;quot;))</code></pre>
+  (println &quot;7 is even&quot;)
+  (println &quot;7 is odd&quot;))</code></pre>
       </td>
     </tr>
   </table>
@@ -67,13 +67,13 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;You can have an if statement without an else.&lt;/p&gt;
+        <p>You can have an if statement without an else.</p>
 
       </td>
 
       <td class="code">
         <pre><code class="clojure">(if (zero? (rem 8 2))
-  (println &amp;quot;8 is divisible by 4&amp;quot;))</code></pre>
+  (println &quot;8 is divisible by 4&quot;))</code></pre>
       </td>
     </tr>
   </table>
@@ -86,7 +86,7 @@
 
       <td class="code">
         <pre><code class="clojure">(when (zero? (rem 8 2))
-  (println &amp;quot;8 is divisible by 4&amp;quot;))</code></pre>
+  (println &quot;8 is divisible by 4&quot;))</code></pre>
       </td>
     </tr>
   </table>
@@ -94,7 +94,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;A statement can precede conditionals; any variables declared in this statement are available in all branches.&lt;/p&gt;
+        <p>A statement can precede conditionals; any variables declared in this statement are available in all branches.</p>
 
       </td>
 
@@ -113,13 +113,13 @@
       <td class="code">
         <pre><code class="clojure">(def num 9)
 (cond (neg? num)
-      (println num &amp;quot;is negative&amp;quot;)
+      (println num &quot;is negative&quot;)
 
-      (&amp;lt; num 10)
-      (println num &amp;quot;has 1 digit&amp;quot;)
+      (&lt; num 10)
+      (println num &quot;has 1 digit&quot;)
 
       :else
-      (println num &amp;quot;has multiple digits&amp;quot;))</code></pre>
+      (println num &quot;has multiple digits&quot;))</code></pre>
       </td>
     </tr>
   </table>
@@ -131,8 +131,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; 9 has 1 digit
-=&amp;gt; nil</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; 9 has 1 digit
+=&gt; nil</code></pre>
       </td>
     </tr>
   </table>

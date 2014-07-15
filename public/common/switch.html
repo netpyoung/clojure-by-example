@@ -45,7 +45,7 @@
 
       <td class="code">
         <pre><code class="clojure">(def i 2)
-(println &amp;quot;write &amp;quot; i &amp;quot; as &amp;quot;)</code></pre>
+(println &quot;write &quot; i &quot; as &quot;)</code></pre>
       </td>
     </tr>
   </table>
@@ -57,8 +57,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; write  2  as
-=&amp;gt; nil</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; write  2  as
+=&gt; nil</code></pre>
       </td>
     </tr>
   </table>
@@ -71,9 +71,9 @@
 
       <td class="code">
         <pre><code class="clojure">(case i
-  1 (println &amp;quot;one&amp;quot;)
-  2 (println &amp;quot;two&amp;quot;)
-  3 (println &amp;quot;three&amp;quot;)
+  1 (println &quot;one&quot;)
+  2 (println &quot;two&quot;)
+  3 (println &quot;three&quot;)
   nil)</code></pre>
       </td>
     </tr>
@@ -86,8 +86,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; two
-=&amp;gt; nil</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; two
+=&gt; nil</code></pre>
       </td>
     </tr>
   </table>
@@ -95,7 +95,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;http://www.java2s.com/Code/JavaAPI/java.util/CalendarSUNDAY.htm&lt;/p&gt;
+        <p>http://www.java2s.com/Code/JavaAPI/java.util/CalendarSUNDAY.htm</p>
 
       </td>
 
@@ -124,12 +124,12 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(case (-&amp;gt; (Date.) bean :day)
+        <pre><code class="clojure">(case (-&gt; (Date.) bean :day)
 
   #{Calendar/SATURDAY Calendar/SUNDAY}
-  (println &amp;quot;it&#39;s the weekend&amp;quot;)
+  (println &quot;it's the weekend&quot;)
 
-  (println &amp;quot;it&#39;s a weekday&amp;quot;))</code></pre>
+  (println &quot;it's a weekday&quot;))</code></pre>
       </td>
     </tr>
   </table>
@@ -141,8 +141,8 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; it&#39;s a weekday
-=&amp;gt; nil</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; it's a weekday
+=&gt; nil</code></pre>
       </td>
     </tr>
   </table>
@@ -155,10 +155,10 @@
 
       <td class="code">
         <pre><code class="clojure">(cond
- (&amp;lt; (-&amp;gt; (Date.) bean :hours) 12)
- (println &amp;quot;it&#39;s before noon&amp;quot;)
+ (&lt; (-&gt; (Date.) bean :hours) 12)
+ (println &quot;it's before noon&quot;)
 
- (println &amp;quot;it&#39;s after noon&amp;quot;))</code></pre>
+ (println &quot;it's after noon&quot;))</code></pre>
       </td>
     </tr>
   </table>
@@ -166,7 +166,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;https://github.com/clj-time/clj-time&lt;/p&gt;
+        <p>https://github.com/clj-time/clj-time</p>
 
       </td>
 

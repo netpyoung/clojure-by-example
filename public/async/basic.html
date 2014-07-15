@@ -40,7 +40,7 @@
   <table>
     <tr>
       <td class="docs">
-        &lt;p&gt;https://github.com/clojure/core.async&lt;/p&gt;
+        <p>https://github.com/clojure/core.async</p>
 
       </td>
 
@@ -57,7 +57,7 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">(require &#39;[clojure.core.async :as async :refer [&amp;lt;! &amp;gt;! &amp;lt;!! timeout chan alt! go]])</code></pre>
+        <pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! timeout chan alt! go]])</code></pre>
       </td>
     </tr>
   </table>
@@ -71,7 +71,7 @@
       <td class="code">
         <pre><code class="clojure">(defn f [from]
   (dotimes [i 3]
-    (println from &amp;quot;:&amp;quot; i)))</code></pre>
+    (println from &quot;:&quot; i)))</code></pre>
       </td>
     </tr>
   </table>
@@ -95,10 +95,10 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; :direct : 0
-&amp;gt;&amp;gt; :direct : 1
-&amp;gt;&amp;gt; :direct : 2
-=&amp;gt; nil</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; :direct : 0
+&gt;&gt; :direct : 1
+&gt;&gt; :direct : 2
+=&gt; nil</code></pre>
       </td>
     </tr>
   </table>
@@ -123,11 +123,11 @@
       </td>
 
       <td class="code">
-        <pre><code class="clojure">;; &amp;gt;&amp;gt; :goroutine : 0
-=&amp;gt; #&amp;lt;ManyToManyChannel clojure.core.async.impl.channels.ManyToManyChannel@488b9d9f&amp;gt;
-&amp;gt;&amp;gt; :goroutine :going
-&amp;gt;&amp;gt; :goroutine : 1
-&amp;gt;&amp;gt; :goroutine : 2</code></pre>
+        <pre><code class="clojure">;; &gt;&gt; :goroutine : 0
+=&gt; #&lt;ManyToManyChannel clojure.core.async.impl.channels.ManyToManyChannel@488b9d9f&gt;
+&gt;&gt; :goroutine :going
+&gt;&gt; :goroutine : 1
+&gt;&gt; :goroutine : 2</code></pre>
       </td>
     </tr>
   </table>
