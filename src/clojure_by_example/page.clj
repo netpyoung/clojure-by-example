@@ -153,29 +153,18 @@
 (defn example-page
   [in-clj]
 
-  (let [doc
-        (marginalia/path-to-doc in-clj)
+  (let [doc       (marginalia/path-to-doc in-clj)
+        namespace (:ns doc)]
 
-        namespace
-        (:ns doc)
+    (selmer/render-file
+     "tpl/example.tpl"
 
-        basename
-        (ns-sym->basename namespace)
-
-        parent-dir
-        (-> (str namespace)
-            (string/split #"\.")
-            (first))]
-
-  (selmer/render-file
-   "tpl/example.tpl"
-   {:parent-dir parent-dir
-    :basename basename
-    :cljfname (ns-sym->cljfname namespace)
-    :doctables (->> doc :groups (map section->html))
-    })))
-
-
+     {:parent-dir (-> (str namespace)
+                      (string/split #"\.")
+                      (first))
+      :basename (ns-sym->basename namespace)
+      :cljfname (ns-sym->cljfname namespace)
+      :doctables (->> doc :groups (map section->html))})))
 
 
 (defn get-example-namespace-info-dic
