@@ -17,11 +17,13 @@
 (let [md* (Markdown4jProcessor.)]
   (defn md
     [markdown-str]
+
     (->> markdown-str (.process md*))))
 
 
 (defn is-debug-comment?
   [section]
+
   (and (= (:type section) :comment)
        (->> section
             :raw
@@ -71,7 +73,9 @@
        (apply str)))
 
 
-(defn section->html [section]
+(defn section->html
+  [section]
+
   [:tr
    [:td {:class "docs"}
     (md (or (cond
@@ -94,7 +98,9 @@
 ;;; ======
 ;;; pages.
 
-(defn main-page []
+(defn main-page
+  []
+
   (selmer/render-file
    "tpl/main.tpl"
 
@@ -125,7 +131,9 @@
          (map eval))}))
 
 
-(defn main-index-page [ns-info-dic]
+(defn main-index-page
+  [ns-info-dic]
+
   (selmer/render-file
    "tpl/main-index.tpl"
 
@@ -134,25 +142,23 @@
       {:section (name k)})}))
 
 
-(defn section-index-page [[section sub-page-namespaces :as ns-info]]
-  (hiccup.page/html5
-   [:head
-    [:link {:rel "stylesheet" :href "../../resources/css/style.css"}]]
-   [:body
-    [:div {:class "main" :id section}
+(defn section-index-page
+  [[section sub-page-namespaces :as ns-info]]
 
-     [:h1 [:a {:href "../"} "public"]]
-     [:h2 section]
-     [:ul
-      (->> sub-page-namespaces
-           (map (fn [namespace]
-                  [(ns-sym->basename namespace) (ns-sym->title namespace)]))
-           (map (fn [[basename title]]
-                  [:li [:a {:href (str "./" basename ".html")} title]])))
-      ]]]))
+  (selmer/render-file
+   "tpl/section-index.tpl"
+
+   {:section section
+    :items   (->> sub-page-namespaces
+                  (map (fn [namespace]
+                         [(ns-sym->basename namespace) (ns-sym->title namespace)]))
+                  (map (fn [[basename title]]
+                         {:basename basename :title title})))}))
 
 
-(defn example-page [in-clj]
+(defn example-page
+  [in-clj]
+
   (let [doc
         (marginalia/path-to-doc in-clj)
 
@@ -192,7 +198,9 @@
 
 
 
-(defn get-example-namespace-info-dic [dirname]
+(defn get-example-namespace-info-dic
+  [dirname]
+
   (->> (java.io.File. dirname)
        (find/find-namespaces-in-dir)
        (group-by (fn [x]

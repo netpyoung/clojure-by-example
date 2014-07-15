@@ -24,7 +24,6 @@
   (raw-info->ns-info {:a [:b-c]})
   ;=> {:a (\"a.b-c\")}
   "
-
   [info-dic]
 
   (->> info-dic
@@ -64,13 +63,16 @@
 
 (defn clj->html
   [in-clj out-html]
+
   ;; TODO(kep) need refactoring.
   (->> in-clj
        (page/example-page)
        (spit out-html)))
 
 
-(defn -main []
+(defn -main
+  []
+
   ;; main page.
   (->> (page/main-page)
        (spit "index.html"))

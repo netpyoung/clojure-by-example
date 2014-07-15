@@ -2,11 +2,13 @@
 {% block contents %}
 
 <div class="main">
+  <h1><a href="../">public</a></h1>
+  <h2>{{section}}</h2>
+    <ul>
 {% for item in items %}
-<div id="{{item.section}}">
-  <h3><a href="{{item.section}}">{{item.section|capitalize}}</a></h3>
-</div>
+      <li><a href="{{item.basename}}">{{item.title}}</a></li>
 {% endfor %}
+    </ul>
 </div>
 
 {% endblock %}
