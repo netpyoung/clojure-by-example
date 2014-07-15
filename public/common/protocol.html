@@ -1,23 +1,161 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><link href="../../resources/favicon.ico" rel="icon" type="image/x-icon"><link href="../../resources/css/style.css" rel="stylesheet"><link href="http://yandex.st/highlightjs/8.0/styles/default.min.css" rel="stylesheet"><script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script><script src="http://yandex.st/highlightjs/8.0/languages/clojure.min.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><div class="title" id="common.protocol"><h1><a href="../">Clojure By Example</a></h1><h2><a href="./">common</a>.protocol</h2><h3><a href="https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/common/protocol.clj">source-github</a></h3><h3><a href="https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/common/protocol.clj">source-raw</a></h3></div><div class="example"><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(ns common.protocol)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(defprotocol IGeometry
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="../../resources/css/style.css" rel="stylesheet">
+
+    
+<link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script src="http://yandex.st/highlightjs/8.0/languages/clojure.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  </head>
+
+  <body>
+    <h1>Under Construction</h1>
+
+    
+<div class="example-header">
+  <h2><a href="./">common</a></h2>
+  <h3><a href="https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/common/protocol.clj">src</a></h3>
+  <h3><a href="https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/common/protocol.clj">raw</a></h3>
+</div>
+
+<div class="example">
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(ns common.protocol)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(defprotocol IGeometry
   (area [this])
-  (perim [this]))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(defrecord Square [width height]
+  (perim [this]))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(defrecord Square [width height]
   IGeometry
   (area [this]
     (* width height))
   (perim [this]
-    (+ (* 2 width) (* 2 height))))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(defrecord Circle [radius]
+    (+ (* 2 width) (* 2 height))))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(defrecord Circle [radius]
   IGeometry
   (area [this]
     (* Math/PI radius radius))
   (perim [this]
-    (* 2 Math/PI radius)))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(defn measure [g]
+    (* 2 Math/PI radius)))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(defn measure [g]
   (println g)
   (println (area g))
-  (println (perim g)))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(measure (map-&gt;Square {:width 3, :height 4}))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; &gt;&gt; #common.protocol.Square{:width 3, :height 4}
-&gt;&gt; 12
-&gt;&gt; 14
-=&gt; nil</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(measure (map-&gt;Circle {:radius 5}))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; &gt;&gt; #common.protocol.Circle{:radius 5}
-&gt;&gt; 78.53981633974483
-&gt;&gt; 31.41592653589793
-=&gt; nil</code></pre></td></tr></table></div></body></html>
+  (println (perim g)))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(measure (map-&amp;gt;Square {:width 3, :height 4}))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &amp;gt;&amp;gt; #common.protocol.Square{:width 3, :height 4}
+&amp;gt;&amp;gt; 12
+&amp;gt;&amp;gt; 14
+=&amp;gt; nil</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(measure (map-&amp;gt;Circle {:radius 5}))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &amp;gt;&amp;gt; #common.protocol.Circle{:radius 5}
+&amp;gt;&amp;gt; 78.53981633974483
+&amp;gt;&amp;gt; 31.41592653589793
+=&amp;gt; nil</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+</div>
+
+  </body>
+
+</html>

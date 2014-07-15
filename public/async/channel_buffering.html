@@ -1,6 +1,132 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><link href="../../resources/favicon.ico" rel="icon" type="image/x-icon"><link href="../../resources/css/style.css" rel="stylesheet"><link href="http://yandex.st/highlightjs/8.0/styles/default.min.css" rel="stylesheet"><script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script><script src="http://yandex.st/highlightjs/8.0/languages/clojure.min.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><div class="title" id="async.channel-buffering"><h1><a href="../">Clojure By Example</a></h1><h2><a href="./">async</a>.channel_buffering</h2><h3><a href="https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/async/channel_buffering.clj">source-github</a></h3><h3><a href="https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/async/channel_buffering.clj">source-raw</a></h3></div><div class="example"><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(ns async.channel-buffering)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! timeout chan alt! go]])</code></pre></td></tr></table><table><tr><td class="docs"><p>https://gobyexample.com/channel-buffering</p>
-</td><td class="code"><pre><code class="clojure">(def message (chan 2))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(go (&gt;! message &quot;buffered&quot;)
-    (&gt;! message &quot;channel&quot;))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(println (&lt;!! message))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; &gt;&gt; buffered
-=&gt; nil</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(println (&lt;!! message))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; &gt;&gt; channel
-=&gt; nil</code></pre></td></tr></table></div></body></html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="../../resources/css/style.css" rel="stylesheet">
+
+    
+<link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script src="http://yandex.st/highlightjs/8.0/languages/clojure.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  </head>
+
+  <body>
+    <h1>Under Construction</h1>
+
+    
+<div class="example-header">
+  <h2><a href="./">async</a></h2>
+  <h3><a href="https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/async/channel_buffering.clj">src</a></h3>
+  <h3><a href="https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/async/channel_buffering.clj">raw</a></h3>
+</div>
+
+<div class="example">
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(ns async.channel-buffering)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(require &#39;[clojure.core.async :as async :refer [&amp;lt;! &amp;gt;! &amp;lt;!! timeout chan alt! go]])</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        &lt;p&gt;https://gobyexample.com/channel-buffering&lt;/p&gt;
+
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(def message (chan 2))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(go (&amp;gt;! message &amp;quot;buffered&amp;quot;)
+    (&amp;gt;! message &amp;quot;channel&amp;quot;))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(println (&amp;lt;!! message))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &amp;gt;&amp;gt; buffered
+=&amp;gt; nil</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(println (&amp;lt;!! message))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &amp;gt;&amp;gt; channel
+=&amp;gt; nil</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+</div>
+
+  </body>
+
+</html>

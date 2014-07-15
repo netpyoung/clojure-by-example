@@ -1,7 +1,193 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><link href="../../resources/favicon.ico" rel="icon" type="image/x-icon"><link href="../../resources/css/style.css" rel="stylesheet"><link href="http://yandex.st/highlightjs/8.0/styles/default.min.css" rel="stylesheet"><script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script><script src="http://yandex.st/highlightjs/8.0/languages/clojure.min.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><div class="title" id="common.const"><h1><a href="../">Clojure By Example</a></h1><h2><a href="./">common</a>.const</h2><h3><a href="https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/common/const.clj">source-github</a></h3><h3><a href="https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/common/const.clj">source-raw</a></h3></div><div class="example"><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(ns common.const)</code></pre></td></tr></table><table><tr><td class="docs"><p>http://stackoverflow.com/questions/9162558/how-does-clojure-const-work</p>
-</td><td class="code"><pre><code class="clojure"></code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(def ^:const s &quot;constant&quot;)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(def ^:const n 500000000)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(def ^:const d (/ 3e20 n))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(println s)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; &gt;&gt; constant
-=&gt; nil</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(println d)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; &gt;&gt; 6.0E11
-=&gt; nil</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(println (long d))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; &gt;&gt; 600000000000
-=&gt; nil</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(println (Math/sin n))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; &gt;&gt; -0.28470407323754404
-=&gt; nil</code></pre></td></tr></table></div></body></html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="../../resources/css/style.css" rel="stylesheet">
+
+    
+<link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script src="http://yandex.st/highlightjs/8.0/languages/clojure.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  </head>
+
+  <body>
+    <h1>Under Construction</h1>
+
+    
+<div class="example-header">
+  <h2><a href="./">common</a></h2>
+  <h3><a href="https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/common/const.clj">src</a></h3>
+  <h3><a href="https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/common/const.clj">raw</a></h3>
+</div>
+
+<div class="example">
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(ns common.const)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        &lt;p&gt;http://stackoverflow.com/questions/9162558/how-does-clojure-const-work&lt;/p&gt;
+
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure"></code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(def ^:const s &amp;quot;constant&amp;quot;)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(def ^:const n 500000000)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(def ^:const d (/ 3e20 n))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(println s)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &amp;gt;&amp;gt; constant
+=&amp;gt; nil</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(println d)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &amp;gt;&amp;gt; 6.0E11
+=&amp;gt; nil</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(println (long d))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &amp;gt;&amp;gt; 600000000000
+=&amp;gt; nil</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(println (Math/sin n))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &amp;gt;&amp;gt; -0.28470407323754404
+=&amp;gt; nil</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+</div>
+
+  </body>
+
+</html>

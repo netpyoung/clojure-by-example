@@ -1,3 +1,237 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><link href="../../resources/favicon.ico" rel="icon" type="image/x-icon"><link href="../../resources/css/style.css" rel="stylesheet"><link href="http://yandex.st/highlightjs/8.0/styles/default.min.css" rel="stylesheet"><script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script><script src="http://yandex.st/highlightjs/8.0/languages/clojure.min.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><div class="title" id="common.record"><h1><a href="../">Clojure By Example</a></h1><h2><a href="./">common</a>.record</h2><h3><a href="https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/common/record.clj">source-github</a></h3><h3><a href="https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/common/record.clj">source-raw</a></h3></div><div class="example"><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(ns common.record)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(defrecord Person [name age])</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(Person. &quot;Bob&quot; 20)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; #common.record.Person{:name &quot;Bob&quot;, :age 20}</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(map-&gt;Person {:name &quot;Alice&quot;, :age 30})</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; #common.record.Person{:name &quot;Alice&quot;, :age 30}</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(map-&gt;Person {:name &quot;Fred&quot;})</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; #common.record.Person{:name &quot;Fred&quot;, :age nil}</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(def s (map-&gt;Person {:name &quot;Sean&quot;, :age 50}))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(:name s)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; &quot;Sean&quot;</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(:age s)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; 50</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(assoc s :age 51)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; #common.record.Person{:name &quot;Sean&quot;, :age 51}</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(println s)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; &gt;&gt; #common.record.Person{:name Sean, :age 50}
-=&gt; nil</code></pre></td></tr></table></div></body></html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="../../resources/css/style.css" rel="stylesheet">
+
+    
+<link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script src="http://yandex.st/highlightjs/8.0/languages/clojure.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  </head>
+
+  <body>
+    <h1>Under Construction</h1>
+
+    
+<div class="example-header">
+  <h2><a href="./">common</a></h2>
+  <h3><a href="https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/common/record.clj">src</a></h3>
+  <h3><a href="https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/common/record.clj">raw</a></h3>
+</div>
+
+<div class="example">
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(ns common.record)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(defrecord Person [name age])</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(Person. &amp;quot;Bob&amp;quot; 20)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; #common.record.Person{:name &amp;quot;Bob&amp;quot;, :age 20}</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(map-&amp;gt;Person {:name &amp;quot;Alice&amp;quot;, :age 30})</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; #common.record.Person{:name &amp;quot;Alice&amp;quot;, :age 30}</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(map-&amp;gt;Person {:name &amp;quot;Fred&amp;quot;})</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; #common.record.Person{:name &amp;quot;Fred&amp;quot;, :age nil}</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(def s (map-&amp;gt;Person {:name &amp;quot;Sean&amp;quot;, :age 50}))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(:name s)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; &amp;quot;Sean&amp;quot;</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(:age s)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; 50</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(assoc s :age 51)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; #common.record.Person{:name &amp;quot;Sean&amp;quot;, :age 51}</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(println s)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &amp;gt;&amp;gt; #common.record.Person{:name Sean, :age 50}
+=&amp;gt; nil</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+</div>
+
+  </body>
+
+</html>

@@ -1,17 +1,275 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><link href="../../resources/favicon.ico" rel="icon" type="image/x-icon"><link href="../../resources/css/style.css" rel="stylesheet"><link href="http://yandex.st/highlightjs/8.0/styles/default.min.css" rel="stylesheet"><script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script><script src="http://yandex.st/highlightjs/8.0/languages/clojure.min.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><div class="title" id="common.range"><h1><a href="../">Clojure By Example</a></h1><h2><a href="./">common</a>.range</h2><h3><a href="https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/common/range.clj">source-github</a></h3><h3><a href="https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/common/range.clj">source-raw</a></h3></div><div class="example"><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(ns common.range)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(def nums [2 3 4])</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(reduce + nums)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; 9</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(doseq [[i num] (map-indexed vector nums)]
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="../../resources/css/style.css" rel="stylesheet">
+
+    
+<link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script src="http://yandex.st/highlightjs/8.0/languages/clojure.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  </head>
+
+  <body>
+    <h1>Under Construction</h1>
+
+    
+<div class="example-header">
+  <h2><a href="./">common</a></h2>
+  <h3><a href="https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/common/range.clj">src</a></h3>
+  <h3><a href="https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/common/range.clj">raw</a></h3>
+</div>
+
+<div class="example">
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(ns common.range)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(def nums [2 3 4])</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(reduce + nums)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; 9</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(doseq [[i num] (map-indexed vector nums)]
   (when (= num 3)
-    (println &quot;index:&quot; i)))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; &gt;&gt; index: 1
-=&gt; nil</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(def kvs {&quot;a&quot; &quot;apple&quot;,
-          &quot;b&quot; &quot;banana&quot;})</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(doseq [[k v] kvs]
-  (printf &quot;%s -&gt; %s\n&quot; k v))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; &gt;&gt; a -&gt; apple
-&gt;&gt; b -&gt; banana
-=&gt; nil</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(doseq [[i c] (map-indexed vector &quot;clojure&quot;)]
-  (println i c))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; &gt;&gt; 0 c
-&gt;&gt; 1 l
-&gt;&gt; 2 o
-&gt;&gt; 3 j
-&gt;&gt; 4 u
-&gt;&gt; 5 r
-&gt;&gt; 6 e
-=&gt; nil</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(range 10)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; (0 1 2 3 4 5 6 7 8 9)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(range 2 10 3)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; (2 5 8)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(range 10 2 -1)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; (10 9 8 7 6 5 4 3)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(range 10 11 -1)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; ()</code></pre></td></tr></table></div></body></html>
+    (println &amp;quot;index:&amp;quot; i)))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &amp;gt;&amp;gt; index: 1
+=&amp;gt; nil</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(def kvs {&amp;quot;a&amp;quot; &amp;quot;apple&amp;quot;,
+          &amp;quot;b&amp;quot; &amp;quot;banana&amp;quot;})</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(doseq [[k v] kvs]
+  (printf &amp;quot;%s -&amp;gt; %s\n&amp;quot; k v))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &amp;gt;&amp;gt; a -&amp;gt; apple
+&amp;gt;&amp;gt; b -&amp;gt; banana
+=&amp;gt; nil</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(doseq [[i c] (map-indexed vector &amp;quot;clojure&amp;quot;)]
+  (println i c))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &amp;gt;&amp;gt; 0 c
+&amp;gt;&amp;gt; 1 l
+&amp;gt;&amp;gt; 2 o
+&amp;gt;&amp;gt; 3 j
+&amp;gt;&amp;gt; 4 u
+&amp;gt;&amp;gt; 5 r
+&amp;gt;&amp;gt; 6 e
+=&amp;gt; nil</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(range 10)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; (0 1 2 3 4 5 6 7 8 9)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(range 2 10 3)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; (2 5 8)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(range 10 2 -1)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; (10 9 8 7 6 5 4 3)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(range 10 11 -1)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; ()</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+</div>
+
+  </body>
+
+</html>

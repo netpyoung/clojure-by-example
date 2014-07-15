@@ -7,10 +7,9 @@
    [selmer.parser :as selmer]
    [marginalia.core :as marginalia]
    [marginalia.hiccup]
-   [hiccup.core :as hiccup]
-   [me.raynes.fs :as fs]
    [hiccup.page]
    [hiccup.compiler]
+   [me.raynes.fs :as fs]
    [clojure.tools.namespace.find :as find]))
 
 
@@ -76,23 +75,18 @@
 (defn section->html
   [section]
 
-  [:tr
-   [:td {:class "docs"}
-    (md (or (cond
-             (is-debug-comment? section)  ""
-             (= (:type section) :comment) (:raw section)
-             :else                        (:docstring section))
-            ""))]
+  {:docs (md (or (cond
+                  (is-debug-comment? section)  ""
+                  (= (:type section) :comment) (:raw section)
+                  :else                        (:docstring section))
+                 ""))
+   :code (or (cond
+              (= (:type section) :code)
+              (marginalia.hiccup/escape-html (:raw section))
 
-   [:td {:class "code"}
-    [:pre [:code {:class "clojure"}
-           (or (cond
-                (= (:type section) :code)
-                (marginalia.hiccup/escape-html (:raw section))
-
-                (is-debug-comment? section)
-                (marginalia.hiccup/escape-html (str ";; " (:raw section))))
-               "")]]]])
+              (is-debug-comment? section)
+              (marginalia.hiccup/escape-html (str ";; " (:raw section))))
+             "")})
 
 
 ;;; ======
@@ -173,28 +167,14 @@
             (string/split #"\.")
             (first))]
 
-    (hiccup.page/html5
-     [:head
-      [:meta {:charset "utf-8"}]
-      [:link {:rel "icon" :type "image/x-icon"
-              :href "../../resources/favicon.ico"}]
-      [:link {:rel "stylesheet" :href "../../resources/css/style.css"}]
-      [:link {:rel "stylesheet" :href "http://yandex.st/highlightjs/8.0/styles/default.min.css"}]
-      [:script {:src "http://yandex.st/highlightjs/8.0/highlight.min.js"}]
-      [:script {:src "http://yandex.st/highlightjs/8.0/languages/clojure.min.js"}]
-      [:script "hljs.initHighlightingOnLoad();"]]
+  (selmer/render-file
+   "tpl/example.tpl"
+   {:parent-dir parent-dir
+    :basename basename
+    :cljfname (ns-sym->cljfname namespace)
+    :doctables (->> doc :groups (map section->html))
+    })))
 
-     [:body
-      [:div {:class "title" :id namespace}
-       [:h1 [:a {:href "../"} "Clojure By Example"]]
-       [:h2 [:a {:href "./"} parent-dir] "." basename]
-       [:h3 [:a {:href (str "https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/" (ns-sym->cljfname namespace))} "source-github"]]
-       [:h3 [:a {:href (str "https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/" (ns-sym->cljfname namespace))} "source-raw"]]
-       ]
-      [:div {:class "example"}
-       (->> (:groups doc)
-            (map (fn [group]
-                   [:table (section->html group)])))]])))
 
 
 

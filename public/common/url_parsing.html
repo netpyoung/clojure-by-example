@@ -1,10 +1,316 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><link href="../../resources/favicon.ico" rel="icon" type="image/x-icon"><link href="../../resources/css/style.css" rel="stylesheet"><link href="http://yandex.st/highlightjs/8.0/styles/default.min.css" rel="stylesheet"><script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script><script src="http://yandex.st/highlightjs/8.0/languages/clojure.min.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><div class="title" id="common.url-parsing"><h1><a href="../">Clojure By Example</a></h1><h2><a href="./">common</a>.url_parsing</h2><h3><a href="https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/common/url_parsing.clj">source-github</a></h3><h3><a href="https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/common/url_parsing.clj">source-raw</a></h3></div><div class="example"><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(ns common.url-parsing)</code></pre></td></tr></table><table><tr><td class="docs"><p>https://gobyexample.com/url-parsing
-<br  />https://github.com/wtetzner/exploding-fish</p>
-</td><td class="code"><pre><code class="clojure"></code></pre></td></tr></table><table><tr><td class="docs"><p>http://docs.oracle.com/javase/7/docs/api/java/net/URI.html</p>
-</td><td class="code"><pre><code class="clojure"></code></pre></td></tr></table><table><tr><td class="docs"><p>http://en.wikipedia.org/wiki/URI_scheme</p>
-</td><td class="code"><pre><code class="clojure"></code></pre></td></tr></table><table><tr><td class="docs"><p>https://github.com/cemerick/url</p>
-</td><td class="code"><pre><code class="clojure">(require '[cemerick.url :as url])</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(require '[org.bovinegenius [exploding-fish :as uri]])</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(def s &quot;postgres://user:pass@host.com:5432/path?k=v#f&quot;)
-(def u (uri/uri s))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(:scheme u)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; &quot;postgres&quot;</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(:user-info u)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; &quot;user:pass&quot;</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(:host u)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; &quot;host.com&quot;</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(:port u)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; 5432</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(:path u)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; &quot;/path&quot;</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(:fragment u)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; &quot;f&quot;</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(:query u)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; &quot;k=v&quot;</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(-&gt;&gt; &quot;k&quot;
-     (get (-&gt;&gt; (uri/query-pairs u)
-               (into {}))))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; =&gt; &quot;v&quot;</code></pre></td></tr></table></div></body></html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="../../resources/css/style.css" rel="stylesheet">
+
+    
+<link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script src="http://yandex.st/highlightjs/8.0/languages/clojure.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  </head>
+
+  <body>
+    <h1>Under Construction</h1>
+
+    
+<div class="example-header">
+  <h2><a href="./">common</a></h2>
+  <h3><a href="https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/common/url_parsing.clj">src</a></h3>
+  <h3><a href="https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/common/url_parsing.clj">raw</a></h3>
+</div>
+
+<div class="example">
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(ns common.url-parsing)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        &lt;p&gt;https://gobyexample.com/url-parsing
+&lt;br  /&gt;https://github.com/wtetzner/exploding-fish&lt;/p&gt;
+
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure"></code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        &lt;p&gt;http://docs.oracle.com/javase/7/docs/api/java/net/URI.html&lt;/p&gt;
+
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure"></code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        &lt;p&gt;http://en.wikipedia.org/wiki/URI_scheme&lt;/p&gt;
+
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure"></code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        &lt;p&gt;https://github.com/cemerick/url&lt;/p&gt;
+
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(require &#39;[cemerick.url :as url])</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(require &#39;[org.bovinegenius [exploding-fish :as uri]])</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(def s &amp;quot;postgres://user:pass@host.com:5432/path?k=v#f&amp;quot;)
+(def u (uri/uri s))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(:scheme u)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; &amp;quot;postgres&amp;quot;</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(:user-info u)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; &amp;quot;user:pass&amp;quot;</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(:host u)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; &amp;quot;host.com&amp;quot;</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(:port u)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; 5432</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(:path u)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; &amp;quot;/path&amp;quot;</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(:fragment u)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; &amp;quot;f&amp;quot;</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(:query u)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; &amp;quot;k=v&amp;quot;</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(-&amp;gt;&amp;gt; &amp;quot;k&amp;quot;
+     (get (-&amp;gt;&amp;gt; (uri/query-pairs u)
+               (into {}))))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; =&amp;gt; &amp;quot;v&amp;quot;</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+</div>
+
+  </body>
+
+</html>

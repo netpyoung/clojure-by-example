@@ -1,49 +1,199 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><link href="../../resources/favicon.ico" rel="icon" type="image/x-icon"><link href="../../resources/css/style.css" rel="stylesheet"><link href="http://yandex.st/highlightjs/8.0/styles/default.min.css" rel="stylesheet"><script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script><script src="http://yandex.st/highlightjs/8.0/languages/clojure.min.js"></script><script>hljs.initHighlightingOnLoad();</script></head><body><div class="title" id="async.ticker"><h1><a href="../">Clojure By Example</a></h1><h2><a href="./">async</a>.ticker</h2><h3><a href="https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/async/ticker.clj">source-github</a></h3><h3><a href="https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/async/ticker.clj">source-raw</a></h3></div><div class="example"><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(ns async.ticker)</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(require '[clojure.core.async :as async :refer [&lt;! &gt;! &lt;!! timeout chan alt! go go-loop put! close! alts! alts!!]])</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(defprotocol ITicker
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="resources/favicon.ico" rel="icon" type="image/x-icon">
+    <link href="../../resources/css/style.css" rel="stylesheet">
+
+    
+<link ref="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css" />
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script src="http://yandex.st/highlightjs/8.0/languages/clojure.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+  </head>
+
+  <body>
+    <h1>Under Construction</h1>
+
+    
+<div class="example-header">
+  <h2><a href="./">async</a></h2>
+  <h3><a href="https://github.com/netpyoung/clojure-by-example/blob/gh-pages/examples/src/async/ticker.clj">src</a></h3>
+  <h3><a href="https://raw.githubusercontent.com/netpyoung/clojure-by-example/gh-pages/examples/src/async/ticker.clj">raw</a></h3>
+</div>
+
+<div class="example">
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(ns async.ticker)</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(require &#39;[clojure.core.async :as async :refer [&amp;lt;! &amp;gt;! &amp;lt;!! timeout chan alt! go go-loop put! close! alts! alts!!]])</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(defprotocol ITicker
   (start! [this])
   (tick! [this])
-  (stop! [this]))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(defrecord Ticker [c msec]
+  (stop! [this]))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(defrecord Ticker [c msec]
   ITicker
   (start! [this]
     (go-loop []
-      (&lt;! (timeout msec))
-      (when (&gt;! c (System/currentTimeMillis))
+      (&amp;lt;! (timeout msec))
+      (when (&amp;gt;! c (System/currentTimeMillis))
         (recur))))
   (tick! [this]
-    (&lt;!! c))
+    (&amp;lt;!! c))
   (stop! [this]
-    (close! c)))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(defn ticker [msec]
+    (close! c)))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(defn ticker [msec]
   (let [c (chan 1)]
-    (Ticker. c msec)))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(let [t (ticker 500)]
+    (Ticker. c msec)))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(let [t (ticker 500)]
   (start! t)
 
   (go-loop []
     (when-let [msec (tick! t)]
       (println msec)
       (recur)))
-  (&lt;!! (timeout 2600))
-  (println &quot;time over&quot;)
+  (&amp;lt;!! (timeout 2600))
+  (println &amp;quot;time over&amp;quot;)
 
-  (stop! t))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; &gt;&gt; 1398643673495
-&gt;&gt; 1398643673996
-&gt;&gt; 1398643674496
-&gt;&gt; 1398643674997
-&gt;&gt; 1398643675498
-&gt;&gt; time over
-=&gt; nil</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(defmacro with-ticker [[name new] &amp; body]
+  (stop! t))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &amp;gt;&amp;gt; 1398643673495
+&amp;gt;&amp;gt; 1398643673996
+&amp;gt;&amp;gt; 1398643674496
+&amp;gt;&amp;gt; 1398643674997
+&amp;gt;&amp;gt; 1398643675498
+&amp;gt;&amp;gt; time over
+=&amp;gt; nil</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(defmacro with-ticker [[name new] &amp;amp; body]
   `(let [~name ~new]
      (start! ~name)
      (do ~@body)
-     (stop! ~name)))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">(with-ticker [a (ticker 500)]
+     (stop! ~name)))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">(with-ticker [a (ticker 500)]
   (go-loop []
     (when-let [msec (tick! a)]
       (println msec)
       (recur)))
-  (&lt;!! (timeout 2600))
-  (println &quot;time over&quot;))</code></pre></td></tr></table><table><tr><td class="docs"></td><td class="code"><pre><code class="clojure">;; &gt;&gt; 1398643706297
-&gt;&gt; 1398643706797
-&gt;&gt; 1398643707298
-&gt;&gt; 1398643707798
-&gt;&gt; 1398643708299
-&gt;&gt; time over
-=&gt; nil</code></pre></td></tr></table></div></body></html>
+  (&amp;lt;!! (timeout 2600))
+  (println &amp;quot;time over&amp;quot;))</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr>
+      <td class="docs">
+        
+      </td>
+
+      <td class="code">
+        <pre><code class="clojure">;; &amp;gt;&amp;gt; 1398643706297
+&amp;gt;&amp;gt; 1398643706797
+&amp;gt;&amp;gt; 1398643707298
+&amp;gt;&amp;gt; 1398643707798
+&amp;gt;&amp;gt; 1398643708299
+&amp;gt;&amp;gt; time over
+=&amp;gt; nil</code></pre>
+      </td>
+    </tr>
+  </table>
+  
+</div>
+
+  </body>
+
+</html>
