@@ -7,7 +7,7 @@
   (:gen-class))
 
 
-(def SECTION_BASE_DIR "ex")
+(def SECTION_BASE_DIR "examples")
 (def PUBLIC_BASE_DIR "public")
 
 
