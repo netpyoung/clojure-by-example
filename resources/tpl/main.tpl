@@ -7,7 +7,7 @@
   <ul>
     {% for item in items %}
     <li>
-      <a href="{{item.link}}">{% if item.title %}{{item.title}}{% endif %}{% if item.img %}<img src="{{item.img}}" />{% endif %}</a>
+      <a href="{{item.link}}">{% if item.title %}{{item.title|safe}}{% endif %}{% if item.img %}<img src="{{item.img}}" />{% endif %}</a>
     </li>
     {% endfor %}
   </ul>

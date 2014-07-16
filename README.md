@@ -13,7 +13,6 @@
 # library
 * tools.reader : https://github.com/clojure/tools.reader
 * marginalia : https://github.com/gdeer81/marginalia
-* hiccup : https://github.com/weavejester/hiccup
 * fs : https://github.com/Raynes/fs
 * markdwon4j : https://code.google.com/p/markdown4j/
 * Selmer : https://github.com/yogthos/Selmer
