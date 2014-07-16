@@ -1,13 +1,13 @@
 (ns clojure-by-example.core
   (:require
+   [clojure.string :as str]
    [me.raynes.fs :as fs]
    [clojure-by-example.page :as page]
    [clojure-by-example.util :as util])
   (:gen-class))
 
 
-(def INFO_FNAME "examples.edn")
-(def EXAMPLE_BASE_DIR "examples/src")
+(def SECTION_BASE_DIR "ex")
 (def PUBLIC_BASE_DIR "public")
 
 
@@ -16,10 +16,10 @@
   >> (ns->in-clj-path :hello.a-b)
   ;=> \"/home/pyoung/prj/clojure-by-example/examples/src/hello/a_b.clj\"
   "
-  [ns-sym]
+  [section namespace]
 
-  (->> (name ns-sym)
-       (str EXAMPLE_BASE_DIR "/")
+  (->> [SECTION_BASE_DIR section "src" namespace]
+       (str/join "/" )
        (fs/ns-path)
        (str)))
 
@@ -29,16 +29,15 @@
   >> (ns->out-html-path :hello.a-b)
   ;=> \"/home/pyoung/prj/clojure-by-example/public/hello/a_b.html\"
   "
-  [ns-sym]
+  [namespace]
 
-  (let [ns-path (->> (name ns-sym)
+  (let [ns-path (->> namespace
                      (str PUBLIC_BASE_DIR "/")
                      (fs/ns-path))]
 
     (str (fs/parent ns-path)
          "/"
          (fs/base-name ns-path true) ".html")))
-
 
 (defn -main
   []
@@ -47,28 +46,36 @@
   (->> (page/main-page)
        (spit "index.html"))
 
-  (let [ns-info-dic (util/get-ns-info INFO_FNAME)]
+  (let [sections (-> (str SECTION_BASE_DIR "/index.txt")
+                     (slurp)
+                     (clojure.string/trim)
+                     (clojure.string/split #"\n"))]
 
     ;; main index page.
     (util/ensure-dir! PUBLIC_BASE_DIR)
-    (->> (page/main-index-page ns-info-dic)
+    (->> (page/main-index-page sections)
          (spit (str PUBLIC_BASE_DIR "/" "index.html")))
 
 
-    ;; per sections
-    (doseq [[section sub-page-namespaces :as ns-info] ns-info-dic]
+    (doseq [section sections]
 
-      ;; example index page.
-      (util/ensure-dir! (str PUBLIC_BASE_DIR "/" (name section)))
-      (->> (page/section-index-page ns-info)
-           (spit (str PUBLIC_BASE_DIR "/" (name section) "/index.html")))
 
-      ;; example pages.
-      (doseq [namespace sub-page-namespaces]
-        (let [in  (ns->in-clj-path namespace) out (ns->out-html-path namespace)]
+      (let [namespaces (-> (clojure.string/join "/" [SECTION_BASE_DIR section "index.txt"])
+                           (slurp)
+                           (clojure.string/trim)
+                           (clojure.string/split #"\n"))]
 
-          ;; clj->html
-          (util/ensure-dir! (fs/parent out))
-          (->> in
-               (page/example-page)
-               (spit out)))))))
+        ;; example index page.
+        (util/ensure-dir! (str PUBLIC_BASE_DIR "/" (name section)))
+        (->> (page/section-index-page section namespaces)
+             (spit (clojure.string/join "/" [PUBLIC_BASE_DIR section "index.html"])))
+
+
+        (doseq [namespace namespaces]
+          (let [in  (ns->in-clj-path section namespace) out (ns->out-html-path namespace)]
+
+            ;; example page.
+            (util/ensure-dir! (fs/parent out))
+            (->> in
+                 (page/example-page)
+                 (spit out))))))))

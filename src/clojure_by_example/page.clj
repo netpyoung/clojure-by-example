@@ -57,17 +57,16 @@
 
 
 (defn main-index-page
-  [ns-info-dic]
+  [sections]
 
   (selmer/render-file
    "tpl/main-index.tpl"
 
-   {:items (for [[k v] ns-info-dic]
-             {:section (name k)})}))
+   {:sections sections}))
 
 
 (defn section-index-page
-  [[section sub-page-namespaces :as ns-info]]
+  [section sub-page-namespaces]
 
   (selmer/render-file
    "tpl/section-index.tpl"
