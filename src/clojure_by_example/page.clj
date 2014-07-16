@@ -66,17 +66,16 @@
 
 
 (defn section-index-page
-  [section sub-page-namespaces]
+  [section namespaces]
 
   (selmer/render-file
    "tpl/section-index.tpl"
 
    {:section section
-    :items   (->> sub-page-namespaces
-                  (map (fn [namespace]
-                         [(util/ns-sym->basename namespace) (util/ns-sym->title namespace)]))
-                  (map (fn [[basename title]]
-                         {:basename basename :title title})))}))
+    :items   (map (fn [namespace]
+                    {:basename (util/ns->basename namespace)
+                     :title    (util/ns->title namespace)})
+                  namespaces)}))
 
 
 (defn example-page
@@ -89,22 +88,24 @@
      "tpl/example.tpl"
 
      {:parent-dir (util/ns->parent-dir namespace)
-      :basename (util/ns-sym->basename namespace)
-      :cljfname (util/ns-sym->cljfname namespace)
-      :doctables (->> doc
-                      :groups
-                      (map (fn [section]
-                             {:docs (util/md (or (cond
-                                                  (is-debug-comment? section)  ""
-                                                  (= (:type section) :comment) (:raw section)
-                                                  :else                        (:docstring section))
+      :basename   (util/ns->basename namespace)
+      :cljfname   (util/ns->cljfname namespace)
 
-                                                 ""))
+      ;; TODO(kep) refactoring.
+      :doctables  (->> doc
+                       :groups
+                       (map (fn [section]
+                              {:docs (util/md (or (cond
+                                                   (is-debug-comment? section)  ""
+                                                   (= (:type section) :comment) (:raw section)
+                                                   :else                        (:docstring section))
 
-                              :code (or (cond
-                                         (= (:type section) :code)
-                                         (marginalia.hiccup/escape-html (:raw section))
+                                                  ""))
 
-                                         (is-debug-comment? section)
-                                         (marginalia.hiccup/escape-html (str ";; " (:raw section))))
-                                        "")})))})))
+                               :code (or (cond
+                                          (= (:type section) :code)
+                                          (marginalia.hiccup/escape-html (:raw section))
+
+                                          (is-debug-comment? section)
+                                          (marginalia.hiccup/escape-html (str ";; " (:raw section))))
+                                         "")})))})))

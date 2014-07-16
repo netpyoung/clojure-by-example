@@ -11,58 +11,57 @@
   (defn md
     [markdown-str]
 
-    (->> markdown-str (.process md*))))
+    (.process md* markdown-str)))
 
 
-(defn ns-sym->cljfname
+(defn ns->cljfname
   "
-  >> (ns-sym->cljfname :hello.clojure-world)
+  >> (ns->cljfname :hello.clojure-world)
   ;=> \"hello/clojure_world.clj\"
   "
-  [ns-sym]
+  [namespace]
 
-  (-> (name ns-sym)
+  (-> (name namespace)
       (string/replace "." "/")
       (string/replace "-" "_")
       (str ".clj")))
 
 
-(defn ns-sym->basename
+(defn ns->basename
   "
-  >> (ns-sym->basename :hello.clojure-world)
+  >> (ns->basename :hello.clojure-world)
   ;=> \"clojure_world\"
   "
-  [ns-sym]
+  [namespace]
 
-  (-> (name ns-sym)
+  (-> (name namespace)
       (string/replace "." "/")
       (string/replace "-" "_")
       (fs/base-name)))
 
 
-(defn ns-sym->title
+(defn ns->title
   "
-  >> (ns-sym->title :hello.clojure-world)
+  >> (ns->title :hello.clojure-world)
   ;=> \"Clojure World\"
   "
-  [ns-sym]
+  [namespace]
 
-  (->> (-> (name ns-sym)
-           (string/split #"\.")
-           (last)
-           (string/split #"-"))
-       (map string/capitalize)
-       (interpose " ")
-       (apply str)))
+  (-> (name namespace)
+      (string/split #"\.")
+      (last)
+      (string/split #"-")
+      (->> (map string/capitalize)
+           (interpose " ")
+           (apply str))))
 
 
 (defn ns->parent-dir
   [namespace]
 
-  (-> (str namespace)
+  (-> namespace
       (string/split #"\.")
       (first)))
-
 
 
 (defn ensure-dir!
@@ -71,25 +70,3 @@
   (or (fs/exists? target-dir)
       (fs/mkdirs target-dir)
       (throw (Exception. (str "[ERROR] couldn't create target dir!" target-dir)))))
-
-
-(defn- raw-info->ns-info
-  "
-  (raw-info->ns-info {:a [:b-c]})
-  ;=> {:a (\"a.b-c\")}
-  "
-  [info-dic]
-
-  (->> info-dic
-       (map (fn [[k v]]
-              [k (map #(str (name k) "." (name %)) v)]))
-       (into {})))
-
-
-(defn get-ns-info
-  [fname]
-
-  (->> fname
-       (slurp)
-       (edn/read-string)
-       (raw-info->ns-info)))
